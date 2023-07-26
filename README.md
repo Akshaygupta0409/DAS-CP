@@ -1,2 +1,2 @@
-# DAS-CP
-data structures and algorithms for interviews and competitive programing
+# cp
+concepts of DSA-CP used in programing 
