@@ -27,11 +27,19 @@ vector<vector<int>> g;
 vector<int> color;
 vector<int> components;
 vector<int> vis;
-map<int,int> mpp;
+map<int,int> MP;
 
 
 // helper functions ------------------------------------------------------------------------------------------------------------
-
+void dfs(int node){
+       vis[node]=1;
+       components[node]=comp_num;
+       for(auto child : g[node]){
+             if(!vis[child]){
+                dfs(child);
+             }
+       }
+}
 
 //main logic -------------------------------------------------------------------------------------------------------------------
 
@@ -42,7 +50,7 @@ void solve()
     components.resize(n+1);
     vis.assign(n+1 , 0);
     color.resize(n+1);
-
+    
     for(int i=0; i<m; i++){
         int a , b; 
         cin>>a>>b;
@@ -50,7 +58,26 @@ void solve()
         g[b].pb(a);
         edgeList.pb(mp(a,b));
         }
-     
+     for(int i=1; i<=n; i++){
+           if(!vis[i]){
+            comp_num++;
+            dfs(i);
+           }
+     }
+    
+     vector<int> no_of_nodes(comp_num+1);
+       for(int i=1; i<=n; i++){
+             no_of_nodes[components[i]]++;
+       }
+
+      int ans = 0;
+      int curr_sum = 0;
+      int prefix_sum = (int)accumulate(no_of_nodes.begin() , no_of_nodes.end(),0);
+      for(int i=1; i<=comp_num; i++){
+            curr_sum += no_of_nodes[i];
+            ans += no_of_nodes[i]*(prefix_sum-curr_sum);
+      }
+      cout << ans ;
     return;
 }
 
