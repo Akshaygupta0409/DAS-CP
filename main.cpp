@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-//#define int long long int
+#define int long long int
 #define f first
 #define s second 
 #define lb lower_bound
@@ -16,95 +16,49 @@ void setIO()
 #endif
 }
 //declaration of golbal variables and functions --------------------------------------------------------------------------------------------------
-
+const int INF = 1e18;
+const int NINF = -1e18;
 
 int n; // number of nodes
 int m; // number of edges
 int comp_num=0;
-vector<pair<int,pair<int,int>>> edgeList;
-//vector<vector<pair<int>> g;
+vector<pair<int,int>> edgeList;
+vector<vector<int>> g;
 vector<int> color;
 vector<int> components;
 vector<int> vis;
 map<int,int> mpp;
-vector<int> par;
-vector<int> rankk;
+
+
 // helper functions ------------------------------------------------------------------------------------------------------------
-
-
-
-    
-    int find(int x){
-     if(par[x]==x) return x;
-     else{
-         return par[x] = find(par[x]);
-     }
-}
-
- void unite(int x , int y){
-        int xx = find(x);
-        int yy = find(y);
-        if(rankk[xx]<rankk[yy])swap(xx,yy);
-        if(rankk[xx]==rankk[yy])rankk[xx]++;
-        par[yy]=xx;
-        return;
-    } 
-
-int check(int x , int y){
-      if(find(x)==find(y)){
-      
-        return 0;
-      }
-      return 1;
-}
-
-
-
-
-
 
 
 //main logic -------------------------------------------------------------------------------------------------------------------
 
 void solve()
 {
-    cin>>n>>m;
-   // g.resize(n+1); // 1 index;
+    cin>>n;
+    g.resize(n+1); // 1 index;
     components.resize(n+1);
     vis.assign(n+1 , 0);
     color.resize(n+1);
-     par.resize(n+1);
-     rankk.resize(n+1);
 
-
-     for(int i=1; i<=n; i++){par[i]=i;}
-    for(int i=0; i<m; i++){
-        int a , b ,cst; 
-        cin>>a>>b>>cst;
-        // g[a].pb(b);
-        // g[b].pb(a);
-        edgeList.pb(mp(cst,mp(a,b)));
+    for(int i=0; i<n-1; i++){
+        int a , b; 
+        cin>>a>>b;
+        g[a].pb(b);
+        g[b].pb(a);
+        edgeList.pb(mp(a,b));
         }
-        sort(edgeList.begin() , edgeList.end());
-
-
-        int ans=0;
-        int cnt=0;
-        for(auto v : edgeList){
-             int x = v.s.f;
-             int y = v.s.s;
-             if(find(x)!=find(y)){
-                 cnt++;
-                 ans  += v.f;
-                 unite(x,y);
-             }
-
-        }  
-       
-
-       if(cnt==n-1)cout<<cnt<<" "<<ans<<'\n';
-       else cout << "IMPOSSIBLE\n";
-
+       int  ans = 0;
+        int curr_ans =0;
+        for(int i=1; i<=n; i++){
+              curr_ans = g[i].size();
+             
+              ans = max(ans,curr_ans);
+        }
+        cout << ans + 1 << '\n';
+     
     return;
 }
 
