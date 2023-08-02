@@ -64,7 +64,7 @@ void solve(){
         int radius = depth[y]/2;
         int temp = y;
         for(int i=0;i<radius;i++){
-            // updating
+            // updating`
             temp = parent[temp];
         }
         

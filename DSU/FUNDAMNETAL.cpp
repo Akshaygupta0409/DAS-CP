@@ -24,7 +24,9 @@ vector<int> rankk;
 //vector<pair<int,int>> qurey;
 
 // helper definitions ---------------------------------------------------------------------------------------
-int find(int x){
+struct unionfind {
+    
+    int find(int x){
      if(par[x]==x) return x;
      else{
          return par[x] = find(par[x]);
@@ -48,6 +50,7 @@ int check(int x , int y){
       return 0;
 }
 
+};
 //main logic --------------------------------------------------------------------------------------------------
 
 void solve()
