@@ -1,10 +1,11 @@
 #include<bits/stdc++.h>
-// #define int long long int
+//#define int long long int
 #define f first
 #define s second 
 #define lb lower_bound
 #define ub upper_bound
 #define mp make_pair 
+#define pb push_back
 using namespace std;
 //basic setup --------------------------------------------------------------------------------------------------
 void setIO()
@@ -17,14 +18,23 @@ void setIO()
 //declaration of golbal variables and functions --------------------------------------------------------------------------------------------------
 
 
-int n; 
-int q; 
+int n; // number of nodes
+int m; // number of edges
+int comp_num=0;
+vector<pair<int,pair<int,int>>> edgeList;
+//vector<vector<pair<int>> g;
+vector<int> color;
+vector<int> components;
+vector<int> vis;
+map<int,int> mpp;
 vector<int> par;
 vector<int> rankk;
-//vector<pair<int,int>> qurey;
+// helper functions ------------------------------------------------------------------------------------------------------------
 
-// helper definitions ---------------------------------------------------------------------------------------
-int find(int x){
+
+
+    
+    int find(int x){
      if(par[x]==x) return x;
      else{
          return par[x] = find(par[x]);
@@ -43,37 +53,60 @@ int find(int x){
 int check(int x , int y){
       if(find(x)==find(y)){
       
-        return 1;
+        return 0;
       }
-      return 0;
+      return 1;
 }
 
-//main logic --------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+//main logic -------------------------------------------------------------------------------------------------------------------
 
 void solve()
-{    cin >> n >>q;
-     par.resize(n);
-     rankk.resize(n);
+{
+    cin>>n>>m;
+   // g.resize(n+1); // 1 index;
+    components.resize(n+1);
+    vis.assign(n+1 , 0);
+    color.resize(n+1);
+     par.resize(n+1);
+     rankk.resize(n+1);
 
-      for(int i=0; i<n; i++){
-         par[i]=i;
-         rankk[i]=0;
-      }
-     while(q--){
-        int a,b,c;
-         cin>>a>>b>>c;
-         if(a==0){
-            unite(b,c);
-         }else{
-            //cout << par[b] << " " <<par[c] << endl;
-            cout<<check(b,c)?1:0;
-            cout<<'\n';
-         }
-     }
-    //for(auto it : par) cout <<it<< " ";
+
+     for(int i=1; i<=n; i++){par[i]=i;}
+    for(int i=0; i<m; i++){
+        int a , b ,cst; 
+        cin>>a>>b>>cst;
+        // g[a].pb(b);
+        // g[b].pb(a);
+        edgeList.pb(mp(cst,mp(a,b)));
+        }
+        sort(edgeList.begin() , edgeList.end());
+
+
+        int ans=0;
+        int cnt=0;
+        for(auto v : edgeList){
+             int x = v.s.f;
+             int y = v.s.s;
+             if(find(x)!=find(y)){
+                 cnt++;
+                 ans  += v.f;
+                 unite(x,y);
+             }
+
+        }  
+       
+
+       if(cnt==n-1)cout<<cnt<<" "<<ans<<'\n';
+       else cout << "IMPOSSIBLE\n";
+
     return;
 }
-
 
 
 //execution of the logic------------------------------------------------------------------------------------------------
@@ -93,3 +126,9 @@ signed main()
     return 0;
 }
 // explations of code ------------------------------------------------------------------------------------------------
+/*
+
+
+
+
+*/
