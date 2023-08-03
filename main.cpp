@@ -32,33 +32,48 @@ map<int,int> mpp;
 
 // helper functions ------------------------------------------------------------------------------------------------------------
 
+vector<int> toposort;
+
+void dfs(int node){
+          vis[node]=1;
+        for(auto v : g[node]){
+              
+               if(!vis[v]){
+                 dfs(v);
+               }
+              }
+     
+        toposort.pb(node);
+        return;
+}
+
 
 //main logic -------------------------------------------------------------------------------------------------------------------
 
 void solve()
 {
-    cin>>n;
+    cin>>n>>m;
     g.resize(n+1); // 1 index;
     components.resize(n+1);
     vis.assign(n+1 , 0);
     color.resize(n+1);
 
-    for(int i=0; i<n-1; i++){
+    for(int i=0; i<m; i++){
         int a , b; 
         cin>>a>>b;
         g[a].pb(b);
-        g[b].pb(a);
+        //g[b].pb(a);
         edgeList.pb(mp(a,b));
         }
-       int  ans = 0;
-        int curr_ans =0;
         for(int i=1; i<=n; i++){
-              curr_ans = g[i].size();
-             
-              ans = max(ans,curr_ans);
+              if(!vis[i]){
+                dfs(i);
+              }
         }
-        cout << ans + 1 << '\n';
-     
+        reverse(toposort.begin() , toposort.end());
+        for(auto v : toposort){
+             cout << v << " ";
+        }
     return;
 }
 
@@ -81,6 +96,7 @@ signed main()
 }
 // explations of code ------------------------------------------------------------------------------------------------
 /*
+topological sorts are only applicabel in directed acyclic graph
 
 
 
