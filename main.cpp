@@ -17,25 +17,49 @@ void setIO()
 }
 
 //-------------------------------------------------------------------------------------------------------------------------
-int n , m;
-vector<vector<int>> g;
-vector<int> vis , color , comp;
+
+int n , s;
+
+int ditsum(int n){
+   
+
+     int ans = 0;
+     while(n>0){
+         int temp = n%10;
+         ans += temp;
+         n = n/10;
+     }
+     
+     return ans;
+}
+
+int check(int x){
+     if(x-ditsum(x)<s){
+        return 1;
+     }
+     return 0;
+}
+
 
 
 
 
 void solve()
-{  
-    cin >> n >> m;
-    g.resize(n+1); // 1 indexed;
+{    cin >> n >> s;
+     int lo = 1 , hi = n , ans = 0;
 
-    for(int i=0; i<m; i++){
-         int fr,to;
-         cin>> fr>>to;
-         g[fr].pb(to);
-         g[to].pb(fr);
-    }
+     while(lo<=hi){
+        int mid = lo + ((hi-lo))/2;
+        if(check(mid)){
+           ans = mid;
+        lo = mid+1;
+       
+        }else{
+               hi = mid-1;
 
+        }
+     }
+     cout << n-ans << '\n';
   return;
 }
 
@@ -49,7 +73,7 @@ signed main()
     cout.tie(0);
     setIO();
     int t = 1;
-    // cin>>t;
+     cin>>t;
     while (t--)
     {
         solve();
