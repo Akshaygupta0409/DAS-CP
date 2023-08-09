@@ -17,49 +17,59 @@ void setIO()
 }
 
 //-------------------------------------------------------------------------------------------------------------------------
-
-int n , s;
-
-int ditsum(int n){
-   
-
-     int ans = 0;
-     while(n>0){
-         int temp = n%10;
-         ans += temp;
-         n = n/10;
-     }
-     
-     return ans;
-}
+int n,m,k;
+vector<int> arr,brr;
 
 int check(int x){
-     if(x-ditsum(x)<s){
+     int cnt = 0;
+     for(int i=0; i<n; i++){
+        cnt += upper_bound(brr.begin(),brr.end(),x-arr[i])-brr.begin();
+     }
+     
+
+     if(cnt>=k){
         return 1;
      }
+
      return 0;
 }
 
 
-
-
-
 void solve()
-{    cin >> n >> s;
-     int lo = 1 , hi = n , ans = 0;
+{  
+    cin >> n >> m >> k;
+    arr.resize(n);
+    brr.resize(m);
+    for(int i=0; i<n; i++){
+        cin>>arr[i];
+    }
+    for(int i=0; i<n; i++){
+        cin>>brr[i];
+    }
+    bool is_swaped=false;
+    if(n>m){
+     // assumption that i am taking in this implentation n is smaller
+     swap(n,m);
+     swap(arr,brr);
+     is_swaped = true;
+    }
 
-     while(lo<=hi){
-        int mid = lo + ((hi-lo))/2;
+    sort(arr.begin(),arr.end());
+    sort(brr.begin() , brr.end());
+    int lo= arr[0]+brr[0] , hi = arr.back()+brr.back() , ans = -1;
+    
+    while(lo<=hi){
+        int mid = lo +( (hi-lo))/2;
         if(check(mid)){
-           ans = mid;
-        lo = mid+1;
-       
+            ans = mid;
+           hi = mid-1;
         }else{
-               hi = mid-1;
+          lo = mid+1;
+           }
+    }
 
-        }
-     }
-     cout << n-ans << '\n';
+    cout <<  ans  << '\n';
+
   return;
 }
 
