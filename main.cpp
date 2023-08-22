@@ -17,59 +17,14 @@ void setIO()
 }
 
 //-------------------------------------------------------------------------------------------------------------------------
-int n,m,k;
-vector<int> arr,brr;
 
-int check(int x){
-     int cnt = 0;
-     for(int i=0; i<n; i++){
-        cnt += upper_bound(brr.begin(),brr.end(),x-arr[i])-brr.begin();
-     }
-     
 
-     if(cnt>=k){
-        return 1;
-     }
-
-     return 0;
-}
-
+vector<int>  a;
+int n,k;
 
 void solve()
 {  
-    cin >> n >> m >> k;
-    arr.resize(n);
-    brr.resize(m);
-    for(int i=0; i<n; i++){
-        cin>>arr[i];
-    }
-    for(int i=0; i<n; i++){
-        cin>>brr[i];
-    }
-    bool is_swaped=false;
-    if(n>m){
-     // assumption that i am taking in this implentation n is smaller
-     swap(n,m);
-     swap(arr,brr);
-     is_swaped = true;
-    }
-
-    sort(arr.begin(),arr.end());
-    sort(brr.begin() , brr.end());
-    int lo= arr[0]+brr[0] , hi = arr.back()+brr.back() , ans = -1;
-    
-    while(lo<=hi){
-        int mid = lo +( (hi-lo))/2;
-        if(check(mid)){
-            ans = mid;
-           hi = mid-1;
-        }else{
-          lo = mid+1;
-           }
-    }
-
-    cout <<  ans  << '\n';
-
+  cin >> n >>k;
   return;
 }
 
