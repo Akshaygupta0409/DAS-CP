@@ -18,11 +18,23 @@ void setIO()
 
 //-------------------------------------------------------------------------------------------------------------------------
 
-
-
+vector<vector<int> g;
+vector<int> vis,indegre;
+int n , m;
 
 void solve()
-{  
+{    cin>>n>>m;
+    g.resize(n+1);
+    indegre.resize(n+1);
+    for(int i=0; i<n; i++){
+        int a , b;
+        cin>>a>>b;
+        g[a].pb(b);
+    }
+    
+   priority_queue<int> pq;
+   ps.push(some_node_which_is_root_node)
+
 
   return;
 }
