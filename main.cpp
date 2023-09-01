@@ -16,37 +16,23 @@ void setIO()
 #endif
 }
 
-int dp[1001][1001];
-string a ,b;
-int n , m;
 
-int rec(int i , int j){
-    if(i==n || j==m){
-        return 0;
-    }
-      if(dp[i][j]!=-1)return dp[i][j];
+vector<int> arr;
+int n;
 
-    int ans = 0;
-    if(a[i]==b[j]){
-        ans = max(ans , 1+rec(i+1,j+1));
-    }
-    rec(i+1,j); rec(i,j+1);
-    return dp[i][j]= ans;
+int rec(int l , int r){
+    
 }
 
 
 void solve()
-{    
-    cin>>a>>b;
-    n = a.size(); m = b.size(); memset(dp , -1 , sizeof(dp));
-    int best = 0;
-    for(int i=0; i<n; i++){
-        for(int j=0; j<m; j++){
-            best= max(best,rec(i,j));
-        }
-    }
-    
-    cout << best <<'\n';
+{  
+   cin >> n; 
+   for(int i=0; i<n; i++){
+    cin>>arr[i];
+   }
+   cout<<rec(0,r-1);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
   return;
 }
 
@@ -60,7 +46,7 @@ signed main()
     cout.tie(0);
     setIO();
     int t = 1;
-     cin>>t;
+    // cin>>t;
     while (t--)
     {
         solve();
