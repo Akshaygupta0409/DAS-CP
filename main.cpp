@@ -7,7 +7,7 @@
 #define mp make_pair 
 #define pb push_back
 using namespace std;
-
+// --------------------------------------------------------------------------------------------------
 void setIO()
 {
 #ifndef ONLINE_JUDGE
@@ -16,29 +16,29 @@ void setIO()
 #endif
 }
 
+//-------------------------------------------------------------------------------------------------------------------------
 
-vector<int> arr;
-int n;
 
-int rec(int l , int r){
-    
-}
 
 
 void solve()
 {  
-   cin >> n; 
-   for(int i=0; i<n; i++){
-    cin>>arr[i];
-   }
-   cout<<rec(0,r-1);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+     int n; 
+     cin >> n; 
+     int arr[n];
+     int dp[n+1];
+     for(int i=0; i<n; i++){
+        cin>>arr[i];
+     }
+
+
+     
   return;
 }
 
 
 
-
+//------------------------------------------------------------------------------------------------
 signed main()
 {
     ios_base::sync_with_stdio(0);

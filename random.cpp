@@ -122,3 +122,29 @@ int getDiameter(TreeNode* root) {
   solve(root);
   return dia;
 }
+
+
+
+
+
+
+
+
+vector<int> v;
+int minsum(int l,int r){
+    if(l==r||l>r) return 1;
+    if(dp[l][r]!=-1) return dp[l][r];
+    int sum=INT_MAX;
+    if(v[l]==v[r]){
+      sum=min(sum,minsum(l+1,r-1));
+    }
+    
+      
+      for(int i=l;i<r;i++){
+        sum=min(sum,minsum(l,i)+minsum(i+1,r));
+      }
+      return dp[l][r]=sum;
+    
+    
+    
+}

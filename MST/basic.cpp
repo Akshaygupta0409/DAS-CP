@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-//#define int long long int
+#define int long long int
 #define f first
 #define s second 
 #define lb lower_bound
