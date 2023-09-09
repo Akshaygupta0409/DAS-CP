@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#define int long long int
+#define lli long long int
 #define pb push_back
 #define fr(a,b) for(int i = a; i < b; i++)
 #define mod 1000000007
@@ -10,8 +10,10 @@
 #define endl '\n'
 #define F first
 #define S second
+#define MK make_pair
 using namespace std;
 using ii= pair<long long,long long>;
+// using lli = long long int ;
 using vi= vector<long long>;
 using vv= vector<vector<long long>>;
 using vpi =vector<pair<long long,long long>>;
@@ -21,7 +23,7 @@ void init_code()
    fast_io;
     #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    freopen("output.txt", "w", stdout);]
     #endif 
 }
 
@@ -36,7 +38,7 @@ void solve()
 }
 
 
-signed main()
+int main()
 {   
     init_code(); 
     int t=1;

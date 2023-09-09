@@ -13,7 +13,7 @@ void setIO(){
    }
 
 
-
+// for generation of sunset as bits of array -> (if n->5) 1111 and this is 15 which is a number with four bits 
 void solve(){
          int arr[4] = {1,2,3,4};
         for(int mask=0; mask<(1<<4); mask++){
