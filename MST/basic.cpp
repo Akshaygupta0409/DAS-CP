@@ -51,11 +51,7 @@ vector<int> rankk;
     } 
 
 int check(int x , int y){
-      if(find(x)==find(y)){
-      
-        return 0;
-      }
-      return 1;
+     return (find(x)==find(y) ? 0:1);
 }
 
 

@@ -27,8 +27,29 @@ void init_code()
     #endif 
 }
 
-vector<vector<int>> g;
+const int INF = 1e9;
+vector<vector<pair<lli , lli>>> g;
 int n; int m;
+vector<int> d;
+int No_of_mindistance = 0;
+
+int dijkstra(int ndoe){
+     d.assign(n+1 , INF);
+     priority_queue<pair<lli,lli>> q;
+     d[node] = 0;
+     q.push(MK(d[node] , node));
+     while(!q.empty()){
+        auto node = q.front(); q.pop();
+        int dd = node.S;
+        int nn = ndoe.F;
+        for(auto c : g[nn]){
+            if(d[node1] + dd < d[c]){
+                d[c] = d[node] + dd;
+            }
+        }
+     }
+}
+
 
 
 void solve()
@@ -36,12 +57,12 @@ void solve()
     cin>>n>>m;
     g.resize(n+1);
     for(int i=0; i<m; i++){
-        int a , b;
-        cin>>a>>b;
-        g[a].pb(b);
-        g[b].pb(a);
+        int a , b , w;
+        cin>>a>>b>>w;
+        g[a].pb(MP(b,w));
+        //g[b].pb(MK(a,w));
     }
-
+    dijkstra(1);
 
 }
 
