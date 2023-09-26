@@ -124,7 +124,7 @@ signed main()
 // explations of code ------------------------------------------------------------------------------------------------
 /*
 
-
+mistake : gettin wrong answer due to use of int instead of long long 
 
 
 */

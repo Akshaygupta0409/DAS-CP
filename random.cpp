@@ -128,7 +128,7 @@ int getDiameter(TreeNode* root) {
 
 
 
-
+// best fo the best state to find for this lr bd kind of qeustion 
 
 vector<int> v;
 int minsum(int l,int r){

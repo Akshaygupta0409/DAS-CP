@@ -57,3 +57,6 @@ void solve(){
 int main(){
     solve();
 }
+
+
+/* struggling with Dp on tress specially wiht out dp    */
