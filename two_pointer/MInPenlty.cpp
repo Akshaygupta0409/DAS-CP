@@ -45,7 +45,7 @@ void solve()
         mp[arr[i]]++;
     }
     int ans = 1e9;
-    ans = min(ans , (int)size(mp));
+    ans = min(ans , (int)size(mp)); // this syntax is wrong don't use this kindof suntax
     for(int i=d; i<n; i++){
         mp[arr[i]]++;
         mp[arr[i-d]]--;

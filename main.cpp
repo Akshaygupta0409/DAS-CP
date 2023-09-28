@@ -21,29 +21,50 @@ using vpi =vector<pair<long long,long long>>;
 void init_code()
 {
    fast_io;
-    #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);]
-    #endif 
+     #ifndef ONLINE_JUDGE
+     freopen("input.txt", "r", stdin);
+     freopen("output.txt", "w", stdout);
+     #endif 
 }
 
-vector<vector<int>> g;
-int n; int m;
-vector<int> degree;
-int componenet_no  = 0;
-map<int , vector<int>> mp;
+
 
 
 void solve()
 {
-    cin>>n>>m;
-    g.resize(n+1);
-    for(int i=0; i<m; i++){
-        int a , b;
-        cin>>a>>b;
-        g[a].pb(b);
-        g[b].pb(a);
+   int n; 
+   int k;
+   cin >> n >> k;
+   vector<int> v(n);
+   for(int i=0; i<n; i++) cin>>v[i];
+   //
+   map<int,int> mp;
+    int head = -1;
+    int tail= 0;
+    int ans = 0;
+    while(tail<n){
+         while(head+1<n && (mp.find(v[head+1])==mp.end()?1:0) + mp.size()<=k ){
+             head++;
+             mp[v[head]]++;
+         }
+         ans += (head-tail+1);
+         if(tail>head){
+           tail++;
+           head = tail - 1;
+         }else{
+             mp[v[tail]]--;
+             if(mp[v[tail]]==0){
+                  mp.erase(v[tail]);
+             }
+             tail++;
+              
+         }
+ 
+          
     }
+
+     cout << ans << endl;
+    
 
 
 }
@@ -51,13 +72,13 @@ void solve()
 
 int main()
 {   
-    init_code(); 
-    int t=1;
-    cin>>t;
-    while(t--)
-    {
-     solve();
-     
-     }
+     init_code(); 
+     int t=1;
+     cin>>t;
+     while(t--)
+     {
+      solve();
       
+      }
+       
 }

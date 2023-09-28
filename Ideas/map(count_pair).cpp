@@ -1,14 +1,3 @@
-/*
-
-question
-
-
-
-
-*/
-
-
-
 #include<bits/stdc++.h>
 #define lli long long int
 #define pb push_back
@@ -38,30 +27,33 @@ void init_code()
     #endif 
 }
 
-string s;
-int cache[1010][1010];
-int done[1010][1010];
 
-int dp(int l , int d ,  int n){
-    if(l==n) return (d==0?1:0);
-    if(d<0) return 0;  // here if depth is negative then no point of exploring furthur 
-    if(cache[l][d] != -1) return  cache[l][d]; 
-    int ans = 0;
-    if(s[l]=='(') ans = (ans + dp(l+1,d+1,n))%mod;
-    else if(s[l]=='?') ans = (ans + dp(l+1,d+1,n)+dp(l+1,d-1,n))%mod;
-    else ans = (ans + dp(l+1,d-1,n))%mod;
-    return  cache[l][d]=ans%mod;
-}
+// my implemtation 
 
+
+map<int , int > mp;
+vector<int> v;
+int n;  int k; 
 
 void solve()
 {
-   cin >> s;
-   memset(cache , -1 , sizeof(cache)); // using this will cause you tle you should instead use loop uptill size of the string 
-   memset(done , 0 , sizeof(done));
-   cout << dp(0,0,s.length()) << endl;
-
-
+      cin>>n>>k;
+      v.resize(n);
+      for(int i=0; i<n; i++){
+          int c; cin >> c;
+             v[i] = c; 
+            mp[c]++;
+      }
+      int ans = 0;
+      for(int i : v){
+          int present = i-k
+         auto it = mp.find(present);
+         if(it != mp.end()){
+            // i will write some conditions to work on it 
+             ans += map[f];
+         }
+      }
+   cout << ans << endl;
 
 }
 
@@ -70,7 +62,7 @@ int main()
 {   
     init_code(); 
     int t=1;
-    cin>>t;
+   // cin>>t;
     while(t--)
     {
      solve();
@@ -78,10 +70,3 @@ int main()
      }
       
 }
-
-
-/*  
-my mistake getting Runtime Error don't know why on onlie judge 
-
-
-*/
