@@ -43,6 +43,8 @@ const int INF = 1000009;
 bool cycle_present = false;
 int ans =  -INF;
 
+// functional graph concept is used in this quesiton 
+
 void dfs(int node , int curr_sum){
         col[node]=2;
         path_sum[node] = curr_sum;
@@ -56,7 +58,7 @@ void dfs(int node , int curr_sum){
         }
         col[node]=3;
 }
-
+  // thsi quesiton is base on functional graph 
 
 
 

@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#define lli long long int
+#define int long long int
 #define pb push_back
 #define fr(a,b) for(int i = a; i < b; i++)
 #define mod 1000000007
@@ -32,44 +32,12 @@ void init_code()
 
 void solve()
 {
-   int n; 
-   int k;
-   cin >> n >> k;
-   vector<int> v(n);
-   for(int i=0; i<n; i++) cin>>v[i];
-   //
-   map<int,int> mp;
-    int head = -1;
-    int tail= 0;
-    int ans = 0;
-    while(tail<n){
-         while(head+1<n && (mp.find(v[head+1])==mp.end()?1:0) + mp.size()<=k ){
-             head++;
-             mp[v[head]]++;
-         }
-         ans += (head-tail+1);
-         if(tail>head){
-           tail++;
-           head = tail - 1;
-         }else{
-             mp[v[tail]]--;
-             if(mp[v[tail]]==0){
-                  mp.erase(v[tail]);
-             }
-             tail++;
-              
-         }
- 
-          
-    }
 
-     cout << ans << endl;
-    
 
 
 }
 
-
+#undef int
 int main()
 {   
      init_code(); 
