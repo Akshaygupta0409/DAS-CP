@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#define lli long long int
+#define int long long int
 #define pb push_back
 #define fr(a,b) for(int i = a; i < b; i++)
 #define mod 1000000007
@@ -7,10 +7,10 @@
 #define all(x) (x).begin(), (x).end()
 #define prDouble(x) cout << fixed << setprecision(10) << x
 #define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL)
-#define endl '\n'
+#define nl '\n'
 #define F first
 #define S second
-#define MK make_pair
+#define MP make_pair
 using namespace std;
 using ii= pair<long long,long long>;
 // using lli = long long int ;
@@ -27,7 +27,7 @@ void init_code()
     #endif 
 }
 
-
+// main logic 
 
 
 void solve()
@@ -37,6 +37,8 @@ void solve()
 
 }
 
+
+#undef int
 
 int main()
 {   

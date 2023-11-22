@@ -11,8 +11,8 @@
 #define F first
 #define S second
 #define MP make_pair
-#define t true
-#define f false
+#define fa false
+#define tr true
 using namespace std;
 using ii= pair<long long,long long>;
 // using lli = long long int ;
@@ -25,51 +25,30 @@ void init_code()
    fast_io;
     #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);]
+    freopen("output.txt", "w", stdout);
     #endif 
 }
 
 // main logic 
-vector<vector<int>> g , grev;
-vector<bool> vis;
-vector<int> topo_order;
-vector<set<int>> condense_graph;
-int curr_scc=0;
-vector<int> scc_number;
-
-int n,m;
-
-// topo ordering on originla graph ;
-void dfs1(int node){
-       
-}
 
 
 void solve()
 {
-    cin >> n >> m;
-    
-     g.resize(n+1);
-     grev.resize(n+1);
-     vis.assign(n+1,f);
-     scc_number.assign(n+1 , 0);
-
-    for (int  i = 0; i <m; i++)
-    {
-          int  a , b;
-          cin >> a >> b; 
-          g[a].push_back(b);
-          grev[b].push_back(a);
-
-    }
-    for(int i=1; i<=n; i++){
-         if(!vis[i]){
-              curr_scc++;
-              dfs1(i);
-         }
-    }
-    
-
+     int n; 
+     cin >> n;
+     priority_queue<pair<int , int>> pq;
+     for(int i=0; i<n; i++){
+        int a; cin>>a;
+        pq.push(MP(a,i));  
+     }
+     int j = pq.top().second;
+     pq.pop();
+     int ans=0;
+     while(pq.size()){
+         ans = max(ans , pq.top().first*abs(pq.top().first - j));
+         pq.pop();
+     }
+    cout << ans << nl;
 
 }
 
