@@ -1,78 +1,105 @@
-#include<bits/stdc++.h>
-#define int long long int
-#define pb push_back
-#define fr(a,b) for(int i = a; i < b; i++)
-#define mod 1000000007
-#define inf (1LL<<60)
-#define all(x) (x).begin(), (x).end()
-#define prDouble(x) cout << fixed << setprecision(10) << x
-#define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL)
-#define nl '\n'
-#define F first
-#define S second
-#define MP make_pair
-#define fa false
-#define tr true
-using namespace std;
-using ii= pair<long long,long long>;
-// using lli = long long int ;
-using vi= vector<long long>;
-using vv= vector<vector<long long>>;
-using vpi =vector<pair<long long,long long>>;
-
-void init_code()
+using lli = long long;
+struct SubtreeVal
 {
-   fast_io;
-     #ifndef ONLINE_JUDGE
-     freopen("input.txt", "r", stdin);
-     freopen("output.txt", "w", stdout);
-     #endif 
-}
-
-// main logic 
-
-
-void solve()
-{
-    int n , m;
-    cin >> n >> m; 
-    vector<int> v(n);
-    vector<int> pre(n+1 , 1);
-    vector<int> suf(n+1 , 1);
-    // prefix
-    for (int i = 0; i < n; i++)
+    multiset<lli> pos;
+    multiset<lli> neg;
+    void add(lli x)
     {
-           cin>>v[i];
-           if(i) pre[i] = (pre[i-1]*v[i])%m;
-           else pre[i] = v[i];
+        if (x >= 0)
+        {
+            pos.insert(x);
+            if (pos.size() > 3)
+            {
+                pos.erase(pos.begin());
+            }
+        }
+        else
+        {
+            x = -x;
+            neg.insert(x);
+            if (neg.size() > 2)
+            {
+                neg.erase(neg.begin());
+            }
+        }
     }
-    //sufix 
-    for(int i=n-1; i>=0; i--){
-        suf[i] = (suf[i+1]*v[i])%m;
+    lli getans()
+    {
+        lli ans = 0;
+        if (pos.size() == 3)
+        {
+            lli temp = 1;
+            for (auto v : pos)
+            {
+                temp *= v;
+            }
+            ans = max(ans, temp);
+        }
+        if (pos.size() >= 1 && neg.size() >= 2)
+        {
+            lli temp = 1;
+            for (auto v : neg)
+            {
+                temp *= v;
+            }
+            temp *= *pos.rbegin();
+            ans = max(ans, temp);
+        }
+        return ans;
     }
-for (int i = 0; i < n; i++)
-   {   int a = 1;
-       int b = 1;
-      a =  (i-1 >= 0  ? pre[i-1] : 1 );
-      b =  (i+1<n ? suf[i+1] : 1);
-      cout <<( a*b)%m << " ";
-   }
-   return ;
+};
 
-}
+class Solution
+{
+public:
+    int n;
+    vector<int> sz;
+    vector<lli> ans;
+    vector<vector<int>> graph;
 
+    SubtreeVal dfs(int nn, int pp, vector<int> &cost)
+    {
+        SubtreeVal temp;
+        temp.add(cost[nn]);
+        sz[nn] = 1;
+        for (auto v : graph[nn])
+        {
+            if (v != pp)
+            {
+                SubtreeVal ch = dfs(v, nn, cost);
+                sz[nn] += sz[v];
+                for (auto v : ch.pos)
+                {
+                    temp.add(v);
+                }
+                for (auto v : ch.neg)
+                {
+                    temp.add(-v);
+                }
+            }
+        }
+        ans[nn] = temp.getans();
+        if (sz[nn] < 3)
+            ans[nn] = 1;
+        return temp;
+    }
 
-#undef int
+    vector<long long> placedCoins(vector<vector<int>> &edges, vector<int> &cost)
+    {
+        n = cost.size();
+        sz.resize(n);
+        ans.resize(n);
+        graph.resize(n);
+        for (int i = 0; i < edges.size(); i++)
+        {
+            int a = edges[i][0];
+            int b = edges[i][1];
+            graph[a].push_back(b);
+            graph[b].push_back(a);
+        }
 
-int main()
-{   
-     init_code(); 
-     int t=1;
-    // cin>>t;
-     while(t--)
-     {
-      solve();
-      
-      }
-       
-}
+        dfs(0, -1, cost);
+
+        return ans;
+    }
+};

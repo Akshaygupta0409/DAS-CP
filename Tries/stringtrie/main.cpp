@@ -30,39 +30,19 @@ void init_code()
 }
 
 // main logic 
-// node logicn  for bit trei and i should use this when dealing with xor related problems 
-
 struct node{
-   node  *child[2];
-   int cnt;
-   node(){
-    child[0] = nullptr;
-    child[1] = nullptr;
-     cnt = 0;
-   }
+    bool is_end;
+    ndoe *child[26];
 };
 
-struct bit_trie{
-      node *r;   // root node 
-      bit_trie(){
-        r = new node();
+node* get_new_node(){
+      node* t = new node();
+      t->is_end = false;
+      for(int i=0; i<n; i++){
+           t->child[i]=NULL;
       }
-      // to insert the node 
-      void insert(int n){
-            node *cur = r;
-            cur->cnt++;
-            for(int i=31; i>=0; i++){
-                int x =( (n&(1<<i)) ? 1 : 0);
-                if(cur->child[x]==nullptr){
-                    cur->child[x] = new node();
-                }
-                cur = cur->child[x];
-                cur->cnt++;
-            }
-            return ;
-      }
-};
-
+      return t;
+}
 
 
 void solve()

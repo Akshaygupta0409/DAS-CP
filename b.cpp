@@ -30,46 +30,57 @@ void init_code()
 }
 
 // main logic 
-// node logicn  for bit trei and i should use this when dealing with xor related problems 
-
-struct node{
-   node  *child[2];
-   int cnt;
-   node(){
-    child[0] = nullptr;
-    child[1] = nullptr;
-     cnt = 0;
-   }
-};
-
-struct bit_trie{
-      node *r;   // root node 
-      bit_trie(){
-        r = new node();
-      }
-      // to insert the node 
-      void insert(int n){
-            node *cur = r;
-            cur->cnt++;
-            for(int i=31; i>=0; i++){
-                int x =( (n&(1<<i)) ? 1 : 0);
-                if(cur->child[x]==nullptr){
-                    cur->child[x] = new node();
-                }
-                cur = cur->child[x];
-                cur->cnt++;
-            }
-            return ;
-      }
-};
-
 
 
 void solve()
 {
+    vector<int> v;
+    int a;
+    while(cin>>a){
+        v.push_back(a);
+    }
+
+    if (v.empty()) {
+        cout << 0 << nl;
+        return;
+    }
+    
+
+   else if(v.size()==2){
+          cout << 1 << nl;
+          return;  
+   }
+
+    else{
+
+         int k = v.back();
+    v.pop_back();
+    sort(v.begin() , v.end());
 
 
+    int i=0 , j=v.size()-1 , ans =0;
+    while (i+1 != j)
+    {    
+        if(v[i]+v[j]>k){
+            ans++;
+            j--;
+        }else{
+            ans++;
+            i++;
+            j--;
+        }
+    }
 
+
+    if(v[i]+v[j]<=k){
+        cout << ans+1 << nl;
+    }else{
+        cout << ans+2 << nl;
+    }
+
+    }
+    
+    return;
 }
 
 
@@ -79,7 +90,7 @@ int main()
 {   
     init_code(); 
     int t=1;
-    cin>>t;
+
     while(t--)
     {
      solve();

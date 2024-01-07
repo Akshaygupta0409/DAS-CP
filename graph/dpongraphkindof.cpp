@@ -57,6 +57,8 @@ void dfs(int node , int curr_sum){
              }
         }
         col[node]=3;
+
+        return ;
 }
   // thsi quesiton is base on functional graph 
 

@@ -2,8 +2,11 @@
 using namespace std;
 
 long long maxArea(vector<int> &h) {
+    // size of input array 
     int n = h.size();
+    // stack to keep track o next greatest or smallest elemtn 
     stack<int> st;
+    // index of that elemtn 
     vector<int> lftNxtMin(n), rhtNxtMin(n);
     for (int i = 0; i < n; i++) {
         while (!st.empty() && h[st.top()] >= h[i]) {

@@ -19,7 +19,7 @@ void solve(){
         for(int mask=0; mask<(1<<4); mask++){
             for(int i=0; i<4; i++){
                 if((mask>>i)&1) cout << arr[i] << " ";
-            }
+            } // I KNOW WHY AND HOW IT WORKS 
             cout<<'\n';
         }
       

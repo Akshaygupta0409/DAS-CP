@@ -1,6 +1,5 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-
 
 /*
 8 7
@@ -13,23 +12,27 @@ using namespace std;
 6 8
 */
 
-int n,m;
+int n, m;
 
 vector<vector<int>> g;
 vector<int> vis;
 vector<int> parent;
 
-void printer(vector<int> v){
-    cout<<"[ ";
-    for(auto x:v){
-        cout<<x<<",";
+void printer(vector<int> v)
+{
+    cout << "[ ";
+    for (auto x : v)
+    {
+        cout << x << ",";
     }
-    cout<<"] ";
+    cout << "] ";
 }
-void printer(vector<vector<int>> v){
-    cout<<"[ ";
-    for(auto x:v)printer(x);
-    cout<<"] ";
+void printer(vector<vector<int>> v)
+{
+    cout << "[ ";
+    for (auto x : v)
+        printer(x);
+    cout << "] ";
 }
 
 // O(N+M)
@@ -37,63 +40,68 @@ void printer(vector<vector<int>> v){
 int cnt = 0;
 bool cycle_present = false;
 
-void dfs(int node,int par){ // 1 and 2. 
-    cout<<node<<endl;
-    vis[node]=1; // mark node visited
+void dfs(int node, int par)
+{ // 1 and 2.
+    cout << node << endl;
+    vis[node] = 1; // mark node visited
     parent[node] = par;
-    for(auto v:g[node]){ // for all neighbour v of node
-        if(!vis[v]){ // if not visited
-            dfs(v,node);
-        }else{
+    for (auto v : g[node])
+    { // for all neighbour v of node
+        if (!vis[v])
+        { // if not visited
+            dfs(v, node);
+        }
+        else
+        {
             // old node, already coloured.
-            if(par!=v)
+            if (par != v)
             {
                 cycle_present = true;
                 // print
-                cout<<node<<" "<<v<<endl;
+                cout << node << " " << v << endl;
                 vector<int> cycle;
                 // save the cycle chain you
                 int x = node;
-                while(x!=v){
+                while (x != v) 
+                
+                {
                     cycle.push_back(x);
                     x = parent[x];
                 }
                 cycle.push_back(v);
-                
+
                 printer(cycle);
-                cout<<endl;
+                cout << endl;
             }
         }
     }
 }
 
-void solve(){
-    cin>>n>>m;
-    
-    g.resize(n+1);
-    vis.resize(n+1);
-    parent.resize(n+1);
-    for(int i=0;i<m;i++){
-        int a,b;
-        cin>>a>>b;
+void solve()
+{
+    cin >> n >> m;
+
+    g.resize(n + 1);
+    vis.resize(n + 1);
+    parent.resize(n + 1);
+    for (int i = 0; i < m; i++)
+    {
+        int a, b;
+        cin >> a >> b;
         g[a].push_back(b);
         g[b].push_back(a);
     }
 
-    for(int i=1;i<=n;i++){
-        if(!vis[i]){
-            dfs(i,0);
+    for (int i = 1; i <= n; i++)
+    {
+        if (!vis[i])
+        {
+            dfs(i, 0);
         }
     }
-    
-    
 }
 
-int main(){
+int main()
+{
     solve();
 }
-
-
-
-
-

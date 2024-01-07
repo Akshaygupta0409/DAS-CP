@@ -17,7 +17,7 @@ public:
             }
         if (!b)
             return ans;
-            
+
         return min(ans, x);
     }
     long long maximumScoreAfterOperations(vector<vector<int>> &edges, vector<int> &values)
@@ -26,7 +26,7 @@ public:
         adj.clear();
         adj.resize(n);
         for (auto v : edges)
-        {
+        { 
             int a = v[0], b = v[1];
             adj[a].push_back(b), adj[b].push_back(a);
         }
