@@ -84,7 +84,7 @@ struct Point{
      return dist < a.dist;
     }
 };
-
+// this logic does it in nlogk iteration reather than nlogn ierationns;
 void solve() {
     int n, k;
     cin >> n >> k;

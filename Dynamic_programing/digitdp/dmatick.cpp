@@ -19,7 +19,7 @@ It is given that the number of digits in A and B is the same and A ≤ B.
 
 
 Input Format
-
+how to deal 
 The first line of the input contains one integer T - the number of test cases. Then T test cases follow.
 
 The first line of each test case contains two space-separated integers M and D.
