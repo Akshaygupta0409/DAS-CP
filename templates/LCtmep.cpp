@@ -30,6 +30,7 @@ using ull = unsigned long long;
 using vll = vector<ll>;
 using pll = pair<ll, ll>;
 using vpll = vector<pll>;
+using vi = vector<int>;
 
 #define fastio() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 #define loop(i,k,n) for(ll i = k; i < n;i++)

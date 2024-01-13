@@ -1,105 +1,66 @@
-using lli = long long;
-struct SubtreeVal
+#pragma GCC optimize("O3,unroll-loops")
+#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <algorithm>
+#include <cmath>
+#include <vector>
+#include <set>
+#include <map>
+#include <unordered_set>
+#include <unordered_map>
+#include <queue>
+#include <ctime>
+#include <cassert>
+#include <complex>
+#include <string>
+#include <cstring>
+#include <chrono>
+#include <random>
+#include <bitset>
+#include <array>
+#include <iomanip>
+// #include <bits/stdc++.h>
+using namespace std;
+
+using ll = long long;
+using lld = long double;
+using ull = unsigned long long;
+using vll = vector<ll>;
+using pll = pair<ll, ll>;
+using vpll = vector<pll>;
+
+#define fastio() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define lloop(i,k,n) for(ll i = k; i < n;i++)
+#define MOD 1000000007
+#define MOD1 998244353
+#define nl "\n"
+#define pb push_back
+#define ppb pop_back
+#define mp make_pair
+#define ff first
+#define ss second
+#define PI 3.141592653589793238462
+#define set_bits __builtin_popcountll
+#define sz(x) ((int)(x).size())
+#define all(x) (x).begin(), (x).end()
+#define UNIQUE(X) X.erase(unique(all(X)),X.end())
+const ll INF = 1e18;
+const ll mxINF = 0x3f3f3f3f3f3f3f3f;
+
+void solve(){
+  
+}
+
+signed main()
 {
-    multiset<lli> pos;
-    multiset<lli> neg;
-    void add(lli x)
+    fastio();
+    int t = 1;
+    cin >> t;
+    while (t--)
     {
-        if (x >= 0)
-        {
-            pos.insert(x);
-            if (pos.size() > 3)
-            {
-                pos.erase(pos.begin());
-            }
-        }
-        else
-        {
-            x = -x;
-            neg.insert(x);
-            if (neg.size() > 2)
-            {
-                neg.erase(neg.begin());
-            }
-        }
+        solve();
     }
-    lli getans()
-    {
-        lli ans = 0;
-        if (pos.size() == 3)
-        {
-            lli temp = 1;
-            for (auto v : pos)
-            {
-                temp *= v;
-            }
-            ans = max(ans, temp);
-        }
-        if (pos.size() >= 1 && neg.size() >= 2)
-        {
-            lli temp = 1;
-            for (auto v : neg)
-            {
-                temp *= v;
-            }
-            temp *= *pos.rbegin();
-            ans = max(ans, temp);
-        }
-        return ans;
-    }
-};
-
-class Solution
-{
-public:
-    int n;
-    vector<int> sz;
-    vector<lli> ans;
-    vector<vector<int>> graph;
-
-    SubtreeVal dfs(int nn, int pp, vector<int> &cost)
-    {
-        SubtreeVal temp;
-        temp.add(cost[nn]);
-        sz[nn] = 1;
-        for (auto v : graph[nn])
-        {
-            if (v != pp)
-            {
-                SubtreeVal ch = dfs(v, nn, cost);
-                sz[nn] += sz[v];
-                for (auto v : ch.pos)
-                {
-                    temp.add(v);
-                }
-                for (auto v : ch.neg)
-                {
-                    temp.add(-v);
-                }
-            }
-        }
-        ans[nn] = temp.getans();
-        if (sz[nn] < 3)
-            ans[nn] = 1;
-        return temp;
-    }
-
-    vector<long long> placedCoins(vector<vector<int>> &edges, vector<int> &cost)
-    {
-        n = cost.size();
-        sz.resize(n);
-        ans.resize(n);
-        graph.resize(n);
-        for (int i = 0; i < edges.size(); i++)
-        {
-            int a = edges[i][0];
-            int b = edges[i][1];
-            graph[a].push_back(b);
-            graph[b].push_back(a);
-        }
-
-        dfs(0, -1, cost);
-
-        return ans;
-    }
-};
+    return 0;
+}
