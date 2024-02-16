@@ -68,12 +68,21 @@ using vvi = vector<vector<int>>;
 #define UNIQUE(X) X.erase(unique(all(X)),X.end())
 const ll INF = 1e18;
 const ll mxINF = 0x3f3f3f3f3f3f3f3f;
-const int intinf = 1e9;
-const int mininf = -1e9;
+
+string s;
 
 
 void solve(){
-
+    cin >> s;
+    int n = len(s);
+    int kmp[n+1];
+    int i=0; int j=-1 ;  kmp[0] = -1;
+    while(i<n){
+        while(j != -1 && s[i] != s[j]) j=kmp[j];
+        i++ , j++;
+        kmp[i]=j;
+    }
+  for(auto it : kmp)cout << it << " ";   
 }
 
 signed main()
