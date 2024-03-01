@@ -81,7 +81,7 @@ int main() {
 					q.push_back({x, y});
 				}
 			}
-		}
+		} 
 	}
 
 	cout << ans;
