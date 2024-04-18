@@ -59,7 +59,7 @@ struct MaintainMode{
         if(freq.find(x)!=freq.end())
             mt.erase(mt.find(make_pair(freq[x],x)));
         freq[x]++;
-        mt.insert(make_pair(freq[x],x));
+        mt.insert(make_pair(freq[x],x));P
     }
     void erase(int x){
         mt.erase(mt.find(make_pair(freq[x],x)));

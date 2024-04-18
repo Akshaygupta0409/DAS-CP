@@ -46,8 +46,8 @@ public:
             }
 
             ans = min(ans, dp(idx + 1, pchar, len, lft - 1));
-            vis[idx][pchar][len][lft]= true;
-            return dpcache[idx][pchar][len][lft]= ans;
+            vis[idx][pchar][len][lft] = true;
+            return dpcache[idx][pchar][len][lft] = ans;
         };
         memset(vis, false, sizeof(vis));
         return dp(0, 26, 0, k);

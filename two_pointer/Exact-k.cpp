@@ -135,7 +135,7 @@ void solve()
   int ans2 = 0;
 
    while(tail<n){
-         while(head+1<n && ((mp.find(v[head+1])==mp.end()?1:0) + mp.size()) < k ){
+         while(head+1<n && ((mp.find(v[head+1])==mp.end()?1:0) + mp.size()) <= (k-1) ){
              head++;
              mp[v[head]]++;
          }

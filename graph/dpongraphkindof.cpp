@@ -60,7 +60,7 @@ void dfs(int node , int curr_sum){
 
         return ;
 }
-  // thsi quesiton is base on functional graph 
+  // thsi quesiton is base on functional graph i mean  i can still formulate it with some sort of graph algorithm;
 
 
 

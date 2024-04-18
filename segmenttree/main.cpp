@@ -42,7 +42,7 @@ struct node
      }
 };
 
-node st[400400];
+node st[400400];   // naming convention 
 node merge(node a ,  node b){
         return node(a.sum + b.sum);
 }

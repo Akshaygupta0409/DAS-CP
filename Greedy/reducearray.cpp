@@ -171,7 +171,7 @@ int main() {
 }
 
 
-/* what is thought that adding one small and one large value will work 
+/* what i thought that adding one small and one large value will work 
    but acctualy adding two small values work ? why is that;
 
    ans :
