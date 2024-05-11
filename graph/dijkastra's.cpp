@@ -29,7 +29,7 @@ void dijkstra(vector<int> sc){
         int nn = xx.S;
         
         if(vis[nn]==1)continue;
-        vis[nn] = 1;
+        vis[nn] = 1;        // most important line to avoid tle in an quesiton 
         
         for(auto v:g[nn]){
             if(vis[v.F]==0 && dd + v.S < dis[v.F]){

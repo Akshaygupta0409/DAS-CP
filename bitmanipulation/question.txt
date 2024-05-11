@@ -1,0 +1,7 @@
+1. https://codeforces.com/contest/1957/problem/B {
+    the main idea of this was to find the msb of k now why to do that ?
+    1 << msb - 1 this does give the max no of set bits
+
+}
+
+
