@@ -42,6 +42,7 @@ public:
             
             dis[u][v] = min(dis[u][v], (long long) cost[i]);
         }
+        // floyad warshal algoritthms 
         for (int k = 0; k < total; ++k) {
             for (int i = 0;i < total; ++i) {
                 for (int j = 0; j < total; ++j) {

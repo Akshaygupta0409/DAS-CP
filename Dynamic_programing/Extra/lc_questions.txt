@@ -1,0 +1,7 @@
+1. https://leetcode.com/problems/maximum-difference-score-in-a-grid/description/ {
+   //  need observation otherwise sates and transtion are clear 
+   important : 
+   Remember that dp cost #s*(avg(t) + 1) only once and after that every call to dp is O(1) 
+}
+
+2. 
