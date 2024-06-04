@@ -1,1 +1,5 @@
-https://codeforces.com/problemset/problem/919/D : good problem main idea is how to use topsort with dp idea 
+https://codeforces.com/problemset/problem/919/D {
+    good problem main idea is how to use topsort with dp idea 
+    khane's algorithm is the main idea on how to maintain the ferequency of the array ;
+}
+

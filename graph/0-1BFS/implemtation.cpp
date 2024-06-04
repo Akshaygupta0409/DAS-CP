@@ -45,7 +45,7 @@ In test cases worth 30 points: N ≤ 200 and H, W ≤ 500
 #include <bits/stdc++.h>
 using namespace std;
 
-int dx[4]{1, -1, 0, 0}, dy[4]{0, 0, 1, -1};
+int dx[4]{1, -1, 0, 0} , dy[4]{0, 0, 1, -1};
 
 int n, m, depth[4000][4000], ans = 1;
 string snow[4000];

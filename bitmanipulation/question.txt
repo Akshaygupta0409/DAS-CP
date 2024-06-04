@@ -4,4 +4,14 @@
 
 }
 
+2.  https://leetcode.com/problems/single-number-iii/ {
+    also in algozenith : the idea is to take xor of all elemnts .
+    but why ?
+    xor of all elemnts will give you number now if the ith bit is set it means that at that pos either ith bit of b is 0 ans a is 1  or vice versa
+    as we have taken the xor of values
+}
+
+3. {
+    
+}
 

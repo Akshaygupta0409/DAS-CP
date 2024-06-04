@@ -1,0 +1,3 @@
+1. topological sort can also be used in finding out the wether the directed graph contains cycles or not
+
+2. 

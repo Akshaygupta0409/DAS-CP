@@ -27,6 +27,8 @@ void init_code()
     #endif 
 }
 
+// very importat and crucial idea for this class of problems
+
 // using stack fo next_greater_element time complexity from O(n^3) -> O(n).
 
 /*        

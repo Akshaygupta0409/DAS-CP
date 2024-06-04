@@ -136,7 +136,7 @@ int n,m;
 // if i have to maintain a lexicographical order
 
 vector<vector<int>> g;
-vector<int> indeg;//outdeg;
+vector<int> indeg;
 vector<int> topo;
 
 void kahn(){

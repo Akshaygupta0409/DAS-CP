@@ -44,7 +44,8 @@ void solve()
           g[b].pb(a); 
           In_out_degree[a]++;
      }
-
+     // why used priority queue ? 
+     // ans -> to maintain lexicographicaly smallest element 
      priority_queue<int> pq;
      for(int i=1; i<=n; i++){
            if(In_out_degree[i]==0) pq.push(i); // if In_out_degree is 0 ;

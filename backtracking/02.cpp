@@ -3,6 +3,7 @@ using namespace std;
 
 int n;
 
+// n queens porblem 
 
 // lccm framework
 // datastructure to store current_solution

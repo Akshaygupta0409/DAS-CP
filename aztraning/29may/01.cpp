@@ -1,4 +1,5 @@
 void solve(){
+
     
     string s;
     cin>>s;
@@ -23,3 +24,5 @@ void solve(){
         cout<<"Correct it";
     }
 }
+// main idea is to use the concept of depths to keep the track of valid parantheses
+
