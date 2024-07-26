@@ -71,61 +71,54 @@ const ll mxINF = 0x3f3f3f3f3f3f3f3f;
 const int intinf = 1e9;
 const int mininf = -1e9;
 
-* cv
-class UnionFind {
-    private :
-    vector<int> parent_;
-    vector<int> size_;
-    int n_;
-    int components_;
-    public :
-    // always keep constructor under public specifier :)
-    UnionFind(int n) : n_(n) , components_(n) {
-           parent_.resize(n);
-           size_.resize(n);
-           for(int i=0; i<n; i++) parent_[i] = i , size_[i] = 1;
-           
-    }
+vector<vector<int>> tree;
+vector<int> subtree;
 
-    int FindParent(int x){
-        if(parent_[x]==x) return x;
-        return parent_[x] = FindParent(parent_[x]);
-    }
-
-    void MergeNode(int x , int y){
-          x = FindParent(x);
-          y = FindParent(y);
-          // consider x < y ;
-          if(size_[x] > size_[y]) swap(x , y);
-          parent_[x] = y;
-          size_[y] += size_[x];
-          components_-= 1;
-    }
-
-    int SameSet(int x , int y){
-        if(FindParent(x)==FindParent(y)) return 1;
-        else return 0;
-    }
-
-};
-
+void dfs(int node=1,int par=0){
+    bool leafnode = true;
+     for(auto child : tree[node]){
+           if(child==par) 
+           continue;
+            leafnode = false;
+            // to compute the parent node we first have to compute the child node that's why we are
+            // calling the dfs function to compute the child nodes ; 
+           dfs(child , node);
+           subtree[node] += (subtree[child] + 1);
+     }
+     if(leafnode) subtree[node] = 0;
+     return; 
+}
 
 
 void solve(){
-   int n;
-   UnionFind dsu(n);
-   vector<int> Alreaday_Connected;
-   // edges that are not removied fromt the graph has to be  connected ;
+    int n; 
+    cin >> n;
+    tree.clear();
+    subtree.clear();
+    tree.resize(n+2);
+    subtree.resize(n+2 , 0);
+    for(int i=2; i<=n; i++){
+          int x;
+          cin >> x;
+          tree[i].push_back(x);
+          tree[x].push_back(i);
+    }
+    // calling the dfs;
+    dfs();
+    for(int i=1; i<=n; i++){
+        cout << subtree[i] << " ";
+    }
+    cout << '\n';
+    
+    return;
 
-
-   // main logic is to create two different set for alice and bob 
 }
 
 signed main()
 {
     fastio();
     int t = 1;
-    cin >> t;
+    //cin >> t;
     while (t--)
     {
         solve();

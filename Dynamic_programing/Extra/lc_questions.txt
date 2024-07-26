@@ -4,4 +4,6 @@
    Remember that dp cost #s*(avg(t) + 1) only once and after that every call to dp is O(1) 
 }
 
-2. 
+2.{
+   
+}

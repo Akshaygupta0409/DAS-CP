@@ -1,0 +1,14 @@
+in this problem 
+1. i did needed to keep tack of money which is the amount of petorl that i am filling up at a given node.
+
+2. identify which paramter you are optimizing on (very importnat )
+
+3. where i got confused {
+    i got confused in related this problem to the odinary dijkatra's problme 
+    (in dijkatra's we optimize on weight but in this we optimize on petrol taken a.k.a money )
+
+}
+
+4. in this identifying state and transation is similiar as identify state in a dp probelm 
+   so in graph probelm just solve it for a linear chain on change is we use dijkatra becaue it
+   contians cycles  

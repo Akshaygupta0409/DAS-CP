@@ -1,27 +1,6 @@
 #pragma GCC optimize("O3,unroll-loops")
 #pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
-#include <iostream>
-#include <cstdio>
-#include <cstdlib>
-#include <algorithm>
-#include <cmath>
-#include <vector>
-#include <set>
-#include <map>
-#include <unordered_set>
-#include <unordered_map>
-#include <queue>
-#include <ctime>
-#include <cassert>
-#include <complex>
-#include <string>
-#include <cstring>
-#include <chrono>
-#include <random>
-#include <bitset>
-#include <array>
-#include <iomanip>
-// #include <bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 using ll = long long;
@@ -43,7 +22,7 @@ using vvi = vector<vector<int>>;
 #define nl "\n"
 #define pb push_back
 #define ppb pop_back
-#define mp make_pair
+#define MP make_pair
 #define res resize
 #define ass assign
 
@@ -73,8 +52,11 @@ const int mininf = -1e9;
 
 
 void solve(){
-
-}
+  ll n; 
+    cin >> n; 
+    cout  << n << " ";
+  
+  }
 
 signed main()
 {

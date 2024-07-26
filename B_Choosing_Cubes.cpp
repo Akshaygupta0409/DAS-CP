@@ -26,13 +26,16 @@ using namespace std;
 
 using ll = long long;
 using lld = long double;
-using ull = unsigned long long;	  
+using ull = unsigned long long;      
 using vll = vector<ll>;
 using pll = pair<ll, ll>;
 using vpll = vector<pll>;
 using vi = vector<int>;
 using vll = vector<ll>;
 using vvi = vector<vector<int>>;
+
+
+
 
 
 
@@ -51,6 +54,11 @@ using vvi = vector<vector<int>>;
 #define ss second
 #define PI 3.141592653589793238462
 #define set_bits __builtin_popcountll
+
+
+
+
+
 
 #define sz(x) ((int)(x).size())
 #define len(x) ((int)x.length())
@@ -71,54 +79,49 @@ const ll mxINF = 0x3f3f3f3f3f3f3f3f;
 const int intinf = 1e9;
 const int mininf = -1e9;
 
-* cv
-class UnionFind {
-    private :
-    vector<int> parent_;
-    vector<int> size_;
-    int n_;
-    int components_;
-    public :
-    // always keep constructor under public specifier :)
-    UnionFind(int n) : n_(n) , components_(n) {
-           parent_.resize(n);
-           size_.resize(n);
-           for(int i=0; i<n; i++) parent_[i] = i , size_[i] = 1;
-           
-    }
-
-    int FindParent(int x){
-        if(parent_[x]==x) return x;
-        return parent_[x] = FindParent(parent_[x]);
-    }
-
-    void MergeNode(int x , int y){
-          x = FindParent(x);
-          y = FindParent(y);
-          // consider x < y ;
-          if(size_[x] > size_[y]) swap(x , y);
-          parent_[x] = y;
-          size_[y] += size_[x];
-          components_-= 1;
-    }
-
-    int SameSet(int x , int y){
-        if(FindParent(x)==FindParent(y)) return 1;
-        else return 0;
-    }
-
-};
-
-
 
 void solve(){
-   int n;
-   UnionFind dsu(n);
-   vector<int> Alreaday_Connected;
-   // edges that are not removied fromt the graph has to be  connected ;
+   int n , f, k;
+   cin >> n >> f >> k;
+   
+   vector<int> arr(n);
+   for(int i=0; i<n; i++){
+        cin >> arr[i];
+   }
+   int val_ = arr[f-1];
+   
+   
+   
+   
+   sort(arr.rbegin() , arr.rend());
+   set<int> st;
+   for(int i=0; i<n; i++){
+        if(arr[i]==val_){
+           st.insert(i);     
+        }
+   }
+   
+   bool l = false  , r = false ;
+   
+   for(auto s : st){
+      
+       if(s < k){
+            l = true;
+       }else if( s >= k){
+           r = true;
+       }
 
-
-   // main logic is to create two different set for alice and bob 
+       for(auto i : st) st.insert(i);
+   }
+   
+   if(l && r) cout << "MAYBE" << nl;
+   else if(l==true){
+       cout << "YES" << nl;
+   }else{
+        cout << "NO" << nl;
+   }
+   
+   return ;
 }
 
 signed main()

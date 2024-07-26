@@ -57,5 +57,5 @@ void solve(){
     
 }
 
-// another implementation if constraints are of the order 10e7 the monotonic deque is
+// another implementation if constraints are of the order 1e7 the monotonic deque is
 // used to calculate it in o(N+k) ;

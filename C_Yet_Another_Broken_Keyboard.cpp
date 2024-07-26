@@ -71,54 +71,18 @@ const ll mxINF = 0x3f3f3f3f3f3f3f3f;
 const int intinf = 1e9;
 const int mininf = -1e9;
 
-* cv
-class UnionFind {
-    private :
-    vector<int> parent_;
-    vector<int> size_;
-    int n_;
-    int components_;
-    public :
-    // always keep constructor under public specifier :)
-    UnionFind(int n) : n_(n) , components_(n) {
-           parent_.resize(n);
-           size_.resize(n);
-           for(int i=0; i<n; i++) parent_[i] = i , size_[i] = 1;
-           
-    }
-
-    int FindParent(int x){
-        if(parent_[x]==x) return x;
-        return parent_[x] = FindParent(parent_[x]);
-    }
-
-    void MergeNode(int x , int y){
-          x = FindParent(x);
-          y = FindParent(y);
-          // consider x < y ;
-          if(size_[x] > size_[y]) swap(x , y);
-          parent_[x] = y;
-          size_[y] += size_[x];
-          components_-= 1;
-    }
-
-    int SameSet(int x , int y){
-        if(FindParent(x)==FindParent(y)) return 1;
-        else return 0;
-    }
-
-};
-
-
 
 void solve(){
-   int n;
-   UnionFind dsu(n);
-   vector<int> Alreaday_Connected;
-   // edges that are not removied fromt the graph has to be  connected ;
+    int n; 
+    int m;
+    cin >> n >> m;
+    vector<int> charter(26 , 0);
+    string s; cin >> s;
+    for(int i=0; i<m; i++){
+          char ch; cin >> ch;
+          charter[ch - 'a'] = 1;
+    }
 
-
-   // main logic is to create two different set for alice and bob 
 }
 
 signed main()

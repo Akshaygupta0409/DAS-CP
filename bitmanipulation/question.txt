@@ -11,7 +11,8 @@
     as we have taken the xor of values
 }
 
+// very beautiful idea which works on (subarray AND  , subarray OR);
 3. {
-    
+
 }
 

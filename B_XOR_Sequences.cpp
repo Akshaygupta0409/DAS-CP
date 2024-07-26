@@ -21,12 +21,12 @@
 #include <bitset>
 #include <array>
 #include <iomanip>
-// #include <bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 using ll = long long;
 using lld = long double;
-using ull = unsigned long long;	  
+using ull = unsigned long long;      
 using vll = vector<ll>;
 using pll = pair<ll, ll>;
 using vpll = vector<pll>;
@@ -71,54 +71,13 @@ const ll mxINF = 0x3f3f3f3f3f3f3f3f;
 const int intinf = 1e9;
 const int mininf = -1e9;
 
-* cv
-class UnionFind {
-    private :
-    vector<int> parent_;
-    vector<int> size_;
-    int n_;
-    int components_;
-    public :
-    // always keep constructor under public specifier :)
-    UnionFind(int n) : n_(n) , components_(n) {
-           parent_.resize(n);
-           size_.resize(n);
-           for(int i=0; i<n; i++) parent_[i] = i , size_[i] = 1;
-           
-    }
-
-    int FindParent(int x){
-        if(parent_[x]==x) return x;
-        return parent_[x] = FindParent(parent_[x]);
-    }
-
-    void MergeNode(int x , int y){
-          x = FindParent(x);
-          y = FindParent(y);
-          // consider x < y ;
-          if(size_[x] > size_[y]) swap(x , y);
-          parent_[x] = y;
-          size_[y] += size_[x];
-          components_-= 1;
-    }
-
-    int SameSet(int x , int y){
-        if(FindParent(x)==FindParent(y)) return 1;
-        else return 0;
-    }
-
-};
-
-
 
 void solve(){
-   int n;
-   UnionFind dsu(n);
-   vector<int> Alreaday_Connected;
-   // edges that are not removied fromt the graph has to be  connected ;
-
-
-   // main logic is to create two different set for alice and bob 
+   int n ;
+   cin >> n;
+   set<int> s;
+  for(int i=0; i<n; i++) s.insert(i);
+  for(auto it : s) cout << it << endl;
 }
 
 signed main()

@@ -26,7 +26,7 @@ using namespace std;
 
 using ll = long long;
 using lld = long double;
-using ull = unsigned long long;	  
+using ull = unsigned long long;
 using vll = vector<ll>;
 using pll = pair<ll, ll>;
 using vpll = vector<pll>;
@@ -34,10 +34,11 @@ using vi = vector<int>;
 using vll = vector<ll>;
 using vvi = vector<vector<int>>;
 
-
-
-#define fastio() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-#define lloop(i,k,n) for(ll i = k; i < n;i++)
+#define fastio()                      \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL)
+#define lloop(i, k, n) for (ll i = k; i < n; i++)
 #define MOD 1000000007
 #define MOD1 998244353
 #define nl "\n"
@@ -56,69 +57,38 @@ using vvi = vector<vector<int>>;
 #define len(x) ((int)x.length())
 #define all(x) begin(x), end(x)
 #define rev(x) reverse(x.begin(), x.end());
-#define trav(a, x) for (auto& a : x)
+#define trav(a, x) for (auto &a : x)
 #define MAX(x) *max_element(all(x))
 #define MIN(x) *min_element(all(x))
-#define FOR(i, n) for (int i = 0; i < n; i++) 
-#define FOR1(i, n) for (int i = 1; i <= n; i++) 
+#define FOR(i, n) for (int i = 0; i < n; i++)
+#define FOR1(i, n) for (int i = 1; i <= n; i++)
 #define SORT(x) sort(x.begin(), x.end())
 #define RSORT(x) sort(x.rbegin(), x.rend())
 #define sum(x) accumulate(x.begin(), x.end(), 0LL)
 
-#define UNIQUE(X) X.erase(unique(all(X)),X.end())
+#define UNIQUE(X) X.erase(unique(all(X)), X.end())
 const ll INF = 1e18;
 const ll mxINF = 0x3f3f3f3f3f3f3f3f;
 const int intinf = 1e9;
 const int mininf = -1e9;
 
-* cv
-class UnionFind {
-    private :
-    vector<int> parent_;
-    vector<int> size_;
-    int n_;
-    int components_;
-    public :
-    // always keep constructor under public specifier :)
-    UnionFind(int n) : n_(n) , components_(n) {
-           parent_.resize(n);
-           size_.resize(n);
-           for(int i=0; i<n; i++) parent_[i] = i , size_[i] = 1;
-           
-    }
+int gcd(int a , int b){
+      if(a==0 || b==0) return a^b;
+      else return gcd(a ,  b%a);
+}
 
-    int FindParent(int x){
-        if(parent_[x]==x) return x;
-        return parent_[x] = FindParent(parent_[x]);
-    }
+void solve()
+{
+    int n, m;
+    cin >> n >> m;
+    vi avals(n), bvals(m);
+    for (int i = 0; i < n; i++)
+        cin >> avals[i];
+    for (int i = 0; i < m; i++)
+        cin >> bvals[i];
 
-    void MergeNode(int x , int y){
-          x = FindParent(x);
-          y = FindParent(y);
-          // consider x < y ;
-          if(size_[x] > size_[y]) swap(x , y);
-          parent_[x] = y;
-          size_[y] += size_[x];
-          components_-= 1;
-    }
-
-    int SameSet(int x , int y){
-        if(FindParent(x)==FindParent(y)) return 1;
-        else return 0;
-    }
-
-};
-
-
-
-void solve(){
-   int n;
-   UnionFind dsu(n);
-   vector<int> Alreaday_Connected;
-   // edges that are not removied fromt the graph has to be  connected ;
-
-
-   // main logic is to create two different set for alice and bob 
+     // mian logic 
+     
 }
 
 signed main()

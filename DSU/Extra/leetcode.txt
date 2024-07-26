@@ -1,0 +1,3 @@
+1. https://leetcode.com/problems/remove-max-number-of-edges-to-keep-graph-fully-traversable/?envType=daily-question&envId=2024-06-30 {
+    idea is to make two dsu for alice and bod that's it man and you are done with the problem
+}

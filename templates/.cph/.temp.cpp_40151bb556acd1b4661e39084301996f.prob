@@ -1,0 +1,1 @@
+{"name":"Local: temp","url":"d:\\DAS-CP\\templates\\temp.cpp","tests":[{"id":1717766470702,"input":"5\n5\n5\n5\n5\n5\n","output":"5 5 5 5 5 "}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\DAS-CP\\templates\\temp.cpp","group":"local","local":true}
