@@ -1,0 +1,131 @@
+#pragma GCC optimize("O3,unroll-loops")
+#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <algorithm>
+#include <cmath>
+#include <vector>
+#include <set>
+#include <map>
+#include <unordered_set>
+#include <unordered_map>
+#include <queue>
+#include <ctime>
+#include <cassert>
+#include <complex>
+#include <string>
+#include <cstring>
+#include <chrono>
+#include <random>
+#include <bitset>
+#include <array>
+#include <iomanip>
+// #include <bits/stdc++.h>
+using namespace std;
+
+using ll = long long;
+using lld = long double;
+using ull = unsigned long long;	  
+using vll = vector<ll>;
+using pll = pair<ll, ll>;
+using vpll = vector<pll>;
+using vi = vector<int>;
+using vll = vector<ll>;
+using vvi = vector<vector<int>>;
+
+
+
+#define fastio() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define lloop(i,k,n) for(ll i = k; i < n;i++)
+#define MOD 1000000007
+#define MOD1 998244353
+#define nl "\n"
+#define pb push_back
+#define ppb pop_back
+#define mp make_pair
+#define res resize
+#define ass assign
+
+#define ff first
+#define ss second
+#define PI 3.141592653589793238462
+#define set_bits __builtin_popcountll
+
+#define sz(x) ((int)(x).size())
+#define len(x) ((int)x.length())
+#define all(x) begin(x), end(x)
+#define rev(x) reverse(x.begin(), x.end());
+#define trav(a, x) for (auto& a : x)
+#define MAX(x) *max_element(all(x))
+#define MIN(x) *min_element(all(x))
+#define FOR(i, n) for (int i = 0; i < n; i++) 
+#define FOR1(i, n) for (int i = 1; i <= n; i++) 
+#define SORT(x) sort(x.begin(), x.end())
+#define RSORT(x) sort(x.rbegin(), x.rend())
+#define sum(x) accumulate(x.begin(), x.end(), 0LL)
+
+#define UNIQUE(X) X.erase(unique(all(X)),X.end())
+const ll INF = 1e18;
+const ll mxINF = 0x3f3f3f3f3f3f3f3f;
+const int intinf = 1e9;
+const int mininf = -1e9;
+
+// maybe i will get and tle for this implementation 
+#define int long long int
+
+
+int mod = 1e9+7;
+
+int r , g , mxh=0;
+int dp[2][100000];
+
+int rec(int i , int r , int g){
+        // base case;
+        if(i == mxh+1) return 1;
+        // pruning case for the problem 
+        if(r < i && g < i) return 0;
+
+        
+        if(dp[i&1][r] != -1) return dp[i][r];
+        int ans = 0;
+
+        if(r >= i) ans = (ans + rec(i+1 , r-i , g))%mod;
+        if(g >= i) ans = (ans + rec(i+1 , r , g-i))%mod;
+
+        return dp[i&1][r] = ans;
+
+}
+
+
+
+
+void solve(){
+  
+  cin >> r >> g;
+  mxh = 0;
+  for(int i=1; i<=10000; i++){
+       int t = (1LL*i*(i+1))/2;
+       if(t <= (r+g)){
+           mxh = i;
+           continue;
+       }
+       
+  }
+  memset(dp , -1 , sizeof(dp));
+  //cout << mxh << endl;
+  cout << rec(1 , r , g) << '\n';
+
+}
+
+signed main()
+{
+    fastio();
+    int t = 1;
+    //cin >> t;
+    while (t--)
+    {
+        solve();
+    }
+    return 0;
+}

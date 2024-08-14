@@ -5,7 +5,7 @@
 #define mod 1000000007
 #define inf (1LL<<60)
 #define all(x) (x).begin(), (x).end()
-#define prDouble(x) cout << fixed << setprecision(10) << x
+#define prDouble(x) cout << fixed << setprecision(10) << x  // very important line of this template
 #define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL)
 #define endl '\n'
 #define F first

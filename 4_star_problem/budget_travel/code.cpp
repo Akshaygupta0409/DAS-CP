@@ -29,7 +29,8 @@ void solve() {
     }
 
     cin >> s >> e >> c;
-
+    
+    // this intialization is very important 
     for (int i = 1; i <= n; i++) {
         for (int c1 = 0; c1 <= c; c1++) {
             dist[i][c1] = INF;
@@ -56,7 +57,7 @@ void solve() {
         // These state are similar to dp satates and we keep that that state at front on which we are optitimizing 
         if (fuel < c && money + p[node] < dist[node][fuel + 1]) { 
             dist[node][fuel + 1] = money + p[node];
-            pq.push({dist[node][fuel + 1], {node, fuel + 1}});
+            pq.push({(money + p[node]), {node, fuel + 1}});
         }
 
         // Travel to neighbors

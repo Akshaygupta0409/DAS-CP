@@ -1,0 +1,89 @@
+Hint 1
+
+Points are gained when you remove all occurrences of “ab”  and “ba” from the string. Clearly, it is wise to remove that substring first which has more points than the other.
+Hint 2
+
+You can remove “ab” and “ba” (if they are present) in any possible order and find the maximum point from all such possibilities. However, that would not be an optimum solution. Instead, try to remove that substring that has more points than the other. Continue to do so till the string has no other occurrence of “ab” or “ba”.
+Solution Approach
+
+This problem is solved by a greedy approach of first removing the substring, which scores more points. Erase all occurrences of that larger substring till it isn’t present in the current state of the string anymore. Then remove all occurrences of the smaller substring from the string. Remember, after every removal, the string size reduces.
+
+Also, from observation, it is clear,  once you remove all substrings of a type (say A) from the string, then the changed string will not contain another substring of the same type. So now you can easily check for the second type of substring.
+
+EXAMPLE RUN : 
+
+1
+
+babadbaba 45 32
+
+
+ 
+
+Since x>y “ab” is removed first.
+
+Two occurrences of “ab” is seen in the current state of S = babadbaba → S = badba 
+
+Cost = 45*2 = 90
+
+Two occurrences of “ba” is seen in current state of S = badba → S = d 
+
+Cost = 90+32*2 = 154
+
+This is the required answer.
+Code
+
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long
+
+void solve()
+{
+stack<char>st;
+int x,y;
+string s;
+cin>>s>>x>>y;
+string o="ab";
+string p="ba";
+if(y>x){
+      swap(x,y);
+      swap(o,p);
+}
+int ans=0;
+for(int i= 0;i<s.length();i++){
+      if(!st.empty()&&st.top()==o[0]&&s[i]==o[1]){
+        st.pop();
+       
+         ans+=x;
+      }
+      else {
+            st.push(s[i]);
+      }
+}
+string m;
+while(!st.empty()){
+ m+=st.top();
+ st.pop();
+}
+reverse(m.begin(),m.end());
+for(int i=0;i<m.length();i++){
+      if(!st.empty()&&st.top()==p[0]&&m[i]==p[1]){
+        st.pop();
+
+         ans+=y;
+      }
+      else {
+            st.push(m[i]);
+      }
+}
+cout<<ans<<endl;
+}
+signed main()
+{
+  int t;
+    cin>>t;
+    while(t--)
+    {
+  solve();
+    }
+return 0;
+}```
