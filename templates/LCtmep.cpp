@@ -1,28 +1,3 @@
-#pragma GCC optimize("O3,unroll-loops")
-#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
-#include <iostream>
-#include <cstdio>
-#include <cstdlib>
-#include <algorithm>
-#include <cmath>
-#include <vector>
-#include <set>
-#include <map>
-#include <unordered_set>
-#include <unordered_map>
-#include <queue>
-#include <ctime>
-#include <cassert>
-#include <complex>
-#include <string>
-#include <cstring>
-#include <chrono>
-#include <random>
-#include <bitset>
-#include <array>
-#include <iomanip>
-// #include <bits/stdc++.h>
-using namespace std;
 
 using ll = long long;
 using lld = long double;
@@ -64,9 +39,8 @@ using vvi = vector<vector<int>>;
 #define SORT(x) sort(x.begin(), x.end())
 #define RSORT(x) sort(x.rbegin(), x.rend())
 #define sum(x) accumulate(x.begin(), x.end(), 0LL)
+// using 0LL for sum purpose and 1LL for mulitplicatoin 
 
 #define UNIQUE(X) X.erase(unique(all(X)),X.end())
-const ll INF = 1e18;
-const ll mxINF = 0x3f3f3f3f3f3f3f3f;
-const int intinf = 1e9;
-const int mininf = -1e9;
+
+

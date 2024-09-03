@@ -16,5 +16,7 @@
         "chrono": "cpp",
         "span": "cpp",
         "utility": "cpp"
-    }
+    },
+    "pieces.cloudCapabilities": "Blended",
+    "pieces.telemetry": true
 }

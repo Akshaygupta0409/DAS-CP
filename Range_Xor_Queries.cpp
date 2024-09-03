@@ -6,7 +6,8 @@ using namespace std;
 
 struct N {
     int x;
-    N() : x(0) {} // Default constructor
+     // Default constructor
+    N() : x(0) {}
     N(int x_) : x(x_) {} // Parameterized constructor
 };
 

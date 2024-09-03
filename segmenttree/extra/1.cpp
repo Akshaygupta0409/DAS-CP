@@ -9,5 +9,6 @@ d <= 1e9 ;
 logic := 
 
 learning := segment tree optimization in dp questions ;
+important question for advance cp ;
 
 */

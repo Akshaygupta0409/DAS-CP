@@ -1,7 +1,27 @@
 #pragma GCC optimize("O3,unroll-loops")
 #pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
-
-#include <bits/stdc++.h>
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <algorithm>
+#include <cmath>
+#include <vector>
+#include <set>
+#include <map>
+#include <unordered_set>
+#include <unordered_map>
+#include <queue>
+#include <ctime>
+#include <cassert>
+#include <complex>
+#include <string>
+#include <cstring>
+#include <chrono>
+#include <random>
+#include <bitset>
+#include <array>
+#include <iomanip>
+// #include <bits/stdc++.h>
 using namespace std;
 
 using ll = long long;
@@ -50,15 +70,23 @@ const ll INF = 1e18;
 const ll mxINF = 0x3f3f3f3f3f3f3f3f;
 const int intinf = 1e9;
 const int mininf = -1e9;
- lli n , m ;
- vi v;
 
-
+int  n;
+int a[100100];
 
 void solve(){
-    cin >> n >> m;
-    for(int i=0; i< n; i++) cin >> v[i]; 
-   v.resize(n);
+    cin >> n;
+    for(int i=1; i<=n; i++) cin >> a[i];
+    int maxi = 0;
+    for(int i=1; i<=n; i++){
+          maxi = max(maxi , a[i]);
+    }
+    cout << n << '\n';
+    for(int i=1; i<=n; i++){
+        if(a[i]==maxi) continue;
+        cout << i << " " << abs(a[i]-maxi) << '\n';
+    }
+
 }
 
 signed main()

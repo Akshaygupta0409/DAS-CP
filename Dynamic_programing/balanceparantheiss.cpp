@@ -57,7 +57,8 @@ int dp(int l , int d ,  int n){
 void solve()
 {
    cin >> s;
-   memset(cache , -1 , sizeof(cache)); // using this will cause you tle you should instead use loop uptill size of the string 
+   memset(cache , -1 , sizeof(cache)); 
+   // using this will cause you tle you should instead use loop uptill size of the string .
    memset(done , 0 , sizeof(done));
    cout << dp(0,0,s.length()) << endl;
 
