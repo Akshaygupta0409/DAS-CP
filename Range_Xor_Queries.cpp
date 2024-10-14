@@ -7,7 +7,7 @@ using namespace std;
 struct N {
     int x;
      // Default constructor
-    N() : x(0) {}
+     N() : x(0) {}
     N(int x_) : x(x_) {} // Parameterized constructor
 };
 

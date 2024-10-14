@@ -1,134 +1,105 @@
-#pragma GCC optimize("O3,unroll-loops")
-#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
-#include <iostream>
-#include <cstdio>
-#include <cstdlib>
-#include <algorithm>
-#include <cmath>
-#include <vector>
-#include <set>
-#include <map>
-#include <unordered_set>
-#include <unordered_map>
-#include <queue>
-#include <ctime>
-#include <cassert>
-#include <complex>
-#include <string>
-#include <cstring>
-#include <chrono>
-#include <random>
-#include <bitset>
-#include <array>
-#include <iomanip>
-// #include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-using ll = long long;
-using lld = long double;
-using ull = unsigned long long;	  
-using vll = vector<ll>;
-using pll = pair<ll, ll>;
-using vpll = vector<pll>;
-using vi = vector<int>;
-using vll = vector<ll>;
-using vvi = vector<vector<int>>;
+#define ll long long int
+#define LD long double
 
+const int N = 100010;
 
+int inf = 1e9;
+int mod = 1e9 + 7;
 
-#define fastio() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-#define lloop(i,k,n) for(ll i = k; i < n;i++)
-#define MOD 1000000007
-#define MOD1 998244353
-#define nl "\n"
-#define pb push_back
-#define ppb pop_back
-#define mp make_pair
-#define res resize
-#define ass assign
-
-#define ff first
-#define ss second
-#define PI 3.141592653589793238462
-#define set_bits __builtin_popcountll
-
-#define sz(x) ((int)(x).size())
-#define len(x) ((int)x.length())
-#define all(x) begin(x), end(x)
-#define rev(x) reverse(x.begin(), x.end());
-#define trav(a, x) for (auto& a : x)
-#define MAX(x) *max_element(all(x))
-#define MIN(x) *min_element(all(x))
-#define FOR(i, n) for (int i = 0; i < n; i++) 
-#define FOR1(i, n) for (int i = 1; i <= n; i++) 
-#define SORT(x) sort(x.begin(), x.end())
-#define RSORT(x) sort(x.rbegin(), x.rend())
-#define sum(x) accumulate(x.begin(), x.end(), 0LL)
-
-#define UNIQUE(X) X.erase(unique(all(X)),X.end())
-const ll INF = 1e18;
-const ll mxINF = 0x3f3f3f3f3f3f3f3f;
-const int intinf = 1e9;
-const int mininf = -1e9;
-
-* cv
-class UnionFind {
-    private :
-    vector<int> parent_;
-    vector<int> size_;
-    int n_;
-    int components_;
-    public :
-    // always keep constructor under public specifier :)
-    UnionFind(int n) : n_(n) , components_(n) {
-           parent_.resize(n);
-           size_.resize(n);
-           for(int i=0; i<n; i++) parent_[i] = i , size_[i] = 1;
-           
+class wunionfind {
+  public:
+    int *id, *sz;
+    int cnt = 0;
+    wunionfind(int n = N) {
+        id = new int[n + 1];
+        sz = new int[n + 1];
+        for(int i = 0; i <= n; i++) {
+            id[i] = i;
+            sz[i] = 1;
+        }
+        cnt = n;
     }
-
-    int FindParent(int x){
-        if(parent_[x]==x) return x;
-        return parent_[x] = FindParent(parent_[x]);
+    int root(int idx) {
+        int x = idx;
+        while(x != id[x]) {
+            id[x] = id[id[x]];
+            x = id[x];
+        }
+        return x;
     }
-
-    void MergeNode(int x , int y){
-          x = FindParent(x);
-          y = FindParent(y);
-          // consider x < y ;
-          if(size_[x] > size_[y]) swap(x , y);
-          parent_[x] = y;
-          size_[y] += size_[x];
-          components_-= 1;
+    bool uni(int a, int b) {
+        int x = root(a), y = root(b);
+        if(sz[x] < sz[y]) {
+            swap(x, y);
+        }
+        if (x != y) {
+            cnt--;
+            id[y] = x;
+            sz[x] += sz[y];
+            sz[y] = 0;
+            return false;
+        }
+        return true;
     }
-
-    int SameSet(int x , int y){
-        if(FindParent(x)==FindParent(y)) return 1;
-        else return 0;
-    }
-
 };
-
-
-
-void solve(){
-   int n;
-   UnionFind dsu(n);
-   vector<int> Alreaday_Connected;
-   // edges that are not removied fromt the graph has to be  connected ;
-
-
-   // main logic is to create two different set for alice and bob 
-}
 
 signed main()
 {
-    fastio();
-    int t = 1;
-    cin >> t;
-    while (t--)
-    {
-        solve();
+    //freopen("IN", "r", stdin);
+    //freopen("OUT", "w", stdout);
+
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+
+    int n, m, q; cin >> n >> m >> q;
+
+    bool marked[m + 1];
+    memset(marked, false, sizeof(marked));
+
+    pair<int,int> query[q];
+    pair<int,int> edge[m + 1];
+
+    for(int i = 1; i <= m; i++) {
+        int u, v; cin >> u >> v;
+        edge[i] = {u, v};
     }
+
+    for(int i = 0; i < q; i++) {
+        int t; cin >> t;
+        if(t == 2) query[i] = {2, -1};
+        else {
+            int x; cin >> x;
+            query[i] = {1, x};
+            marked[x] = true;
+        }
+    }
+
+    wunionfind W(n);
+
+    for(int i = 1; i <= m; i++) {
+        if(!marked[i]) {
+            int u = edge[i].first;
+            int v = edge[i].second;
+            W.uni(u, v);
+        }
+    }
+
+    vector<int> ans;
+
+    for(int i = q - 1; i >= 0; i--) {
+        if(query[i].first == 2) ans.push_back(W.cnt);
+        else {
+            int u = query[i].second;
+            W.uni(edge[u].first, edge[u].second);
+        }
+    }
+
+    reverse(ans.begin(), ans.end());
+
+    for(int u : ans) cout << u << "\n";
+
     return 0;
 }
