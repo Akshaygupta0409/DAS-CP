@@ -70,17 +70,33 @@ const ll INF = 1e18;
 const ll mxINF = 0x3f3f3f3f3f3f3f3f;
 const int intinf = 1e9;
 const int mininf = -1e9;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+
+ll n;
+vector<pair<ll , ll>> a;
 
 void solve(){
-
+   cin >> n;
+   a.clear();
+   for(int i = 0; i < n; i++){
+         ll x, c; // Renamed `a` to `x`
+         cin >> x >> c;
+         pair<ll, ll> nn = {x, c};
+         a.push_back(nn);
+   }
+   sort(a.begin(), a.end());
+   
+   ll ans = 0;
+   for(int i = 0; i <= a.size()-3; i++){
+      ans += max(( a[i+1].first - a[i].first ), a[i].second);
+   }
+   cout << ans+(max(a[0].first - a[a.size()-1].first , a[a.size()-1].second)) << '\n';
 }
 
 signed main()
 {
     fastio();
     int t = 1;
-    cin >> t;
+    //cin >> t;
     while (t--)
     {
         solve();

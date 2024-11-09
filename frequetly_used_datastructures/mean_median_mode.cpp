@@ -1,3 +1,14 @@
+/*
+   the braoder idea is to maintian a paritision set ;
+
+*/
+
+
+
+
+
+
+
 #include<bits/stdc++.h>
 using namespace std;
 

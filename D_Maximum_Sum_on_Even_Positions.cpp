@@ -21,7 +21,7 @@
 #include <bitset>
 #include <array>
 #include <iomanip>
-// #include <bits/stdc++.h>
+ #include <bits/stdc++.h>
 using namespace std;
 
 using ll = long long;
@@ -70,10 +70,64 @@ const ll INF = 1e18;
 const ll mxINF = 0x3f3f3f3f3f3f3f3f;
 const int intinf = 1e9;
 const int mininf = -1e9;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+
+
+ll dp[100100][3][3]; // -> i'th pos , started or ended , even or odd .
+bool vis[100100][3][3];
+ll n ;
+vector<ll> v;
+
+ll count(int i, int s, int p) {
+    // Base case: if we've processed all elements
+    if (i == n) return 0;
+
+    // Check memoization
+    if (vis[i][s][p]) return dp[i][s][p];
+
+    ll ans = 0;
+
+    // Transition logic
+    if (s == 0) {
+        ans = max(ans, (i % 2 == 0 ? v[i] : 0) + count(i + 1, 0, 0));
+        ans = max(ans, (i % 2 != 0 ? v[i] : 0) + count(i + 1, 1, i % 2));
+    } else if(s=1){
+       // different if p==1 odd , p==1 means even;
+       if(p==1){
+          if(i%2==0){
+                 ans = max(ans , count(i+1 , 2 , p));
+                 ans = max(ans , count(i+1 , 1 , p));
+          }else{
+               ans = max(ans , v[i] + count(i+1 , 1 , p));          }       }else{
+             if(p==0){
+                 if(i%2==0){
+                    ans = max(ans , count(i+1 , 1 , p));                 }else{
+                    ans = max( ans , v[i] + count(i+1 , 2 , p));
+                    ans = max( ans , v[i] + count(i+1 , 1 , p));
+                 }
+             }else{
+                 ans = max( ans , count(i+1 , 1 , p));
+             }       }    } else if (s == 2) {
+        ans = max(ans, (i % 2 == 0 ? v[i] : 0) + count(i + 1, 2, p));
+    }
+
+    vis[i][s][p] = true;
+    return dp[i][s][p] = ans;
+}
 
 void solve(){
+    cin >> n;
+    v.clear();
+    v.resize(n);
+    for(int i=0; i<n; i++) cin >> v[i];
 
+    for(int i=0; i<=n+10; i++){
+        for(int j=0; j<3; j++){
+            for(int k=0; k<3; k++){
+                 vis[i][j][k] = false;
+            }
+        }
+    }
+    cout << count(0,0,0) << '\n';
 }
 
 signed main()

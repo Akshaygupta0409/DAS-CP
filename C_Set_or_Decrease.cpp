@@ -70,10 +70,10 @@ const ll INF = 1e18;
 const ll mxINF = 0x3f3f3f3f3f3f3f3f;
 const int intinf = 1e9;
 const int mininf = -1e9;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+
 
 void solve(){
-
+   cout << 0 << endl;
 }
 
 signed main()
