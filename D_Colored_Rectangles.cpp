@@ -1,89 +1,62 @@
-#pragma GCC optimize("O3,unroll-loops")
-#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
-#include <iostream>
-#include <cstdio>
-#include <cstdlib>
-#include <algorithm>
-#include <cmath>
-#include <vector>
-#include <set>
-#include <map>
-#include <unordered_set>
-#include <unordered_map>
-#include <queue>
-#include <ctime>
-#include <cassert>
-#include <complex>
-#include <string>
-#include <cstring>
-#include <chrono>
-#include <random>
-#include <bitset>
-#include <array>
-#include <iomanip>
-// #include <bits/stdc++.h>
-using namespace std;
+class Solution {
+public:
+    vector<long long> countKConstraintSubstrings(string s, int k, vector<vector<int>>& queries) {
+        int n = s.size();
+        vector<long long> result;          // Result vector to store answers for each query
+        vector<long long> prefixSum(n);   // Prefix sum to store counts of valid substrings
+        vector<int> leftBound(n);         // Leftmost valid position for each index
+        int left = 0;                     // Sliding window left pointer
+        int countZeros = 0, countOnes = 0;
 
-using ll = long long;
-using lld = long double;
-using ull = unsigned long long;	  
-using vll = vector<ll>;
-using pll = pair<ll, ll>;
-using vpll = vector<pll>;
-using vi = vector<int>;
-using vll = vector<ll>;
-using vvi = vector<vector<int>>;
+        // Calculate the left bounds using a sliding window
+        for (int right = 0; right < n; right++) {
+            if (s[right] == '1') countOnes++;
+            else countZeros++;
 
+            // Adjust the window if constraints are violated
+            while (countZeros > k && countOnes > k) {
+                if (s[left] == '1') countOnes--;
+                else countZeros--;
+                left++;
+            }
+            leftBound[right] = left; // Store the valid leftmost position
+        }
 
+        // Calculate the prefix sums of valid substrings
+        prefixSum[0] = 1;
+        for (int i = 1; i < n; i++) {
+            prefixSum[i] = prefixSum[i - 1] + i - leftBound[i] + 1;
+        }
 
-#define fastio() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-#define lloop(i,k,n) for(ll i = k; i < n;i++)
-#define MOD 1000000007
-#define MOD1 998244353
-#define nl "\n"
-#define pb push_back
-#define ppb pop_back
-#define mp make_pair
-#define res resize
-#define ass assign
+        // Process each query
+        for (const auto& query : queries) {
+            long long queryLeft = query[0];
+            long long queryRight = query[1];
+            long long count = 0;
+            long long position = queryRight + 1;
 
-#define ff first
-#define ss second
-#define PI 3.141592653589793238462
-#define set_bits __builtin_popcountll
+            // Binary search to find the first valid position within the range
+            long long low = queryLeft, high = queryRight;
+            while (low <= high) {
+                long long mid = (low + high) / 2;
+                if (leftBound[mid] >= queryLeft) {
+                    position = mid;
+                    high = mid - 1;
+                } else {
+                    low = mid + 1;
+                }
+            }
 
-#define sz(x) ((int)(x).size())
-#define len(x) ((int)x.length())
-#define all(x) begin(x), end(x)
-#define rev(x) reverse(x.begin(), x.end());
-#define trav(a, x) for (auto& a : x)
-#define MAX(x) *max_element(all(x))
-#define MIN(x) *min_element(all(x))
-#define FOR(i, n) for (int i = 0; i < n; i++) 
-#define FOR1(i, n) for (int i = 1; i <= n; i++) 
-#define SORT(x) sort(x.begin(), x.end())
-#define RSORT(x) sort(x.rbegin(), x.rend())
-#define sum(x) accumulate(x.begin(), x.end(), 0LL)
+            // Calculate the result for the current query
+            if (position <= queryRight) {
+                count += prefixSum[queryRight];
+                if (position > 0) count -= prefixSum[position - 1];
+            }
+            count += (position - queryLeft) * (position - queryLeft + 1) / 2;
 
-#define UNIQUE(X) X.erase(unique(all(X)),X.end())
-const ll INF = 1e18;
-const ll mxINF = 0x3f3f3f3f3f3f3f3f;
-const int intinf = 1e9;
-const int mininf = -1e9;
+            result.push_back(count); // Add the result to the output vector
+        }
 
-
-void solve(){
-
-}
-
-signed main()
-{
-    fastio();
-    int t = 1;
-    cin >> t;
-    while (t--)
-    {
-        solve();
+        return result;
     }
-    return 0;
-}
+};

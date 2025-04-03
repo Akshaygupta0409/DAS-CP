@@ -26,7 +26,7 @@ using namespace std;
 
 using ll = long long;
 using lld = long double;
-using ull = unsigned long long;      
+using ull = unsigned long long;	  
 using vll = vector<ll>;
 using pll = pair<ll, ll>;
 using vpll = vector<pll>;
@@ -71,53 +71,17 @@ const ll mxINF = 0x3f3f3f3f3f3f3f3f;
 const int intinf = 1e9;
 const int mininf = -1e9;
 
-// preprocessing 
-int par[100010][21];
-int depth[100100];
-
-// build with these
-void dfs(int node , int par , int dep){
-       par[node][0] = par;
-       depth[node]  = dep;
-       for(int i=1; i<=19; i++){
-          par[node][i] = par[par[node][i-1]][i-1];
-       }
-       // child of this node;
-       for(auto child : g[node]){
-        if(node != par){
-            dfs(child , node , dep+1);
-        }
-       }
-       return ;
-}
-// logic of calculating lcA
- int lca(int u , int v){
-        if(depth[u] < depth[v]){
-            swap(u ,v);
-        }
-        // jump uptill node u and node v are not at same depth;
-        for(int i=19; i>=0; i--){
-             if((depth[u] - depth[v])&(1<<i)){
-                 u = par[u][i];
-             }
-        }
-        if(u==v) return u;
-        // if they are not equal
-        for(int i=19; i>=0; i--){
-             if(par[u][i] != par[v][i]){
-                 u = par[u][i];
-                 v = par[v][i];
-             }
-        }
-        // imediate parent of node u;
-        return par[u][0];
-
- }
-
-
+ll n; 
 
 void solve(){
-
+    
+     cin >> n;
+     vll v(n+1);
+     v[1] = v[n-1] = 1;
+     v[2]  = v[n] = 2;
+     for(int i=3; i<=n-2; i++) v[i] = i;
+     for(int i=1; i<=n; i++) cout << v[i] << " ";
+     cout << '\n';
 }
 
 signed main()

@@ -26,7 +26,7 @@ using namespace std;
 
 using ll = long long;
 using lld = long double;
-using ull = unsigned long long;      
+using ull = unsigned long long;	  
 using vll = vector<ll>;
 using pll = pair<ll, ll>;
 using vpll = vector<pll>;
@@ -71,52 +71,29 @@ const ll mxINF = 0x3f3f3f3f3f3f3f3f;
 const int intinf = 1e9;
 const int mininf = -1e9;
 
-// preprocessing 
-int par[100010][21];
-int depth[100100];
+const int mod = 1e9+7; 
+ll n  ; string s;
+// binary exp
+ll binexp(long long base , long long exp){
+     base %= mod;
+    ll res = 1;
+    while(exp > 0) {
+        if(exp & 1)
+          res = res * base % mod;
+       base = base * base % mod;
 
-// build with these
-void dfs(int node , int par , int dep){
-       par[node][0] = par;
-       depth[node]  = dep;
-       for(int i=1; i<=19; i++){
-          par[node][i] = par[par[node][i-1]][i-1];
-       }
-       // child of this node;
-       for(auto child : g[node]){
-        if(node != par){
-            dfs(child , node , dep+1);
-        }
-       }
-       return ;
+       exp >>=1 ;
+    }
+    return res;
 }
-// logic of calculating lcA
- int lca(int u , int v){
-        if(depth[u] < depth[v]){
-            swap(u ,v);
-        }
-        // jump uptill node u and node v are not at same depth;
-        for(int i=19; i>=0; i--){
-             if((depth[u] - depth[v])&(1<<i)){
-                 u = par[u][i];
-             }
-        }
-        if(u==v) return u;
-        // if they are not equal
-        for(int i=19; i>=0; i--){
-             if(par[u][i] != par[v][i]){
-                 u = par[u][i];
-                 v = par[v][i];
-             }
-        }
-        // imediate parent of node u;
-        return par[u][0];
-
- }
-
-
 
 void solve(){
+    cin >> n >> s;
+    int window = n - s.length() + 1; // no of window's
+    int gap = n - s.length(); 
+    ll ans = 0;
+    ans = window * binexp(26 , gap) % mod;
+    cout << ans << '\n';
 
 }
 
@@ -124,7 +101,7 @@ signed main()
 {
     fastio();
     int t = 1;
-    cin >> t;
+    //cin >> t;
     while (t--)
     {
         solve();

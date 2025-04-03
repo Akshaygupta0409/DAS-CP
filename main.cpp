@@ -124,3 +124,95 @@ int main() {
     cout << MinDistance(W,H, N) << '\n';
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <vector>
+#include <utility>
+#include <algorithm>
+
+class Graph {
+public:
+    Graph(int vertices) : V(vertices), time(0), disc(vertices, -1), low(vertices, -1), parent(vertices, -1) {
+        adj.resize(vertices);
+    }
+
+    void addEdge(int u, int v) {
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+
+    void findBridges() {
+        for (int i = 0; i < V; ++i) {
+            if (disc[i] == -1) {
+                dfs(i);
+            }
+        }
+    }
+
+    void dfs(int u) {
+        disc[u] = low[u] = time++;
+
+        for (int v : adj[u]) {
+            if (disc[v] == -1) { // If v is not visited
+                parent[v] = u;
+                dfs(v);
+
+                // Check if the subtree rooted at v has a connection back to one of u's ancestors
+                low[u] = std::min(low[u], low[v]);
+
+                // If the lowest vertex reachable from subtree under v is above u in DFS tree, then u-v is a bridge
+                if (low[v] > disc[u]) {
+                    std::cout << "Bridge found between " << u << " and " << v << std::endl;
+                }
+            } else if (v != parent[u]) { // Update low value of u for parent function calls.
+                low[u] = std::min(low[u], disc[v]);
+            }
+        }
+    }
+
+private:
+    int V; // Number of vertices
+    int time;
+    std::vector<std::vector<int>> adj; // Adjacency list
+    std::vector<int> disc, low, parent;
+};
+
+int main() {
+    Graph g(5);
+    g.addEdge(0, 1);
+    g.addEdge(1, 2);
+    g.addEdge(2, 3);
+    g.addEdge(3, 4);
+    g.addEdge(1, 3);
+
+    g.findBridges();
+
+    return 0;
+}
