@@ -27,33 +27,35 @@ This repository contains solutions to a wide range of competitive programming pr
 
 ## Directory Structure
 
-Each folder in the root corresponds to a topic or technique:
+The project is organized into topic-focused modules:
 
-- `4_star_problem/`: Hard problems requiring advanced combinatorial and optimization techniques.
-- `Binary_search/`: Binary search patterns (O(log n)).
-- `DSU/`: Disjoint Set Union (Union-Find) implementations with path compression.
-- `Dynamic_programing/`: Dynamic programming (memoization & bottom-up).
-- `Fenwick_tree(aka bit)/`: Fenwick Tree implementations for range queries/updates.
-- `Greedy/`: Greedy algorithms and correctness proofs.
-- `Ideas/`: Conceptual exercises and thought experiments.
-- `Observations/`: Practical insights and heuristics.
-- `Range_maintanence/`: Segment tree and lazy propagation techniques.
-- `Stack/`: Stack applications and recursion simulation.
-- `Tries/`: Trie (prefix tree) implementations for string algorithms.
-- `graph/`: Graph algorithms (DFS, BFS, Dijkstra, spanning trees).
-- `histogramidea/`: Variations of the largest rectangle in histogram problem.
-- `lccodes/`: Solutions to LeetCode problems.
-- `maths/`: Number theory and mathematical problem solving.
-- `scc/`: Strongly Connected Components (Kosaraju, Tarjan).
-- `segmenttree/`: Advanced segment tree variants.
-- `string/`: String processing and pattern matching.
-- `suprenode_dijkastra/`: Supernode optimizations for Dijkstra.
-- `templates/`: Common C++ templates and helper classes.
-- `topological_sort/`: Topological sorting in DAGs.
-- `tree/`: Tree traversal, diameter, and distance algorithms.
-- `two_pointer/`: Two-pointer technique problems.
-- `backtracking/`: Backtracking and brute-force search patterns.
-- `basics/`, `binary_tree/`, `bitmanipulation/`, `contributation-technique/`: Utility snippets and foundational techniques.
+| Directory                                          | Description                                                         | Key Concepts                             | Sample Problems                        |
+|----------------------------------------------------|---------------------------------------------------------------------|------------------------------------------|----------------------------------------|
+| 4_star_problem/                                    | Hard combinatorial & optimization puzzles                           | Combinatorics, DFS, heuristic pruning     | 4-sum, advanced DP                     |
+| Binary_search/                                     | Classic and parametric binary search techniques                     | O(log n), boundary conditions            | First/last occurrence search           |
+| DSU/                                               | Dynamic connectivity using Union-Find                                | Union by rank, path compression          | Connected components                   |
+| Dynamic_programing/                                | Top-down and bottom-up dynamic programming                          | Memoization, state transition            | Knapsack, LIS                          |
+| Fenwick_tree(aka bit)/                             | Fenwick tree for prefix queries and point updates                   | O(log n) updates/queries                 | Range sum, inversion count             |
+| Greedy/                                            | Greedy algorithms with proof-of-correctness frameworks               | Local optimality, sorting strategies      | Activity selection, interval partition |
+| Ideas/                                             | Conceptual exercises and algorithmic thought experiments             | Varied                                   | Problem brainstorming                  |
+| Observations/                                      | Practical insights, heuristics, and implementation tips              | Performance tuning, memory considerations | Cache-friendly coding                  |
+| Range_maintanence/                                 | Segment tree and lazy propagation techniques                        | Interval trees, lazy updates              | Range sum, range update                |
+| Stack/                                             | Stack-based solutions and recursive simulation                      | LIFO operations, recursion management     | Next greater element, DFS simulation   |
+| Tries/                                             | Trie (prefix tree) implementations for string operations            | O(L) per operation, memory trade-offs    | Autocomplete, prefix queries           |
+| graph/                                             | Graph traversal and shortest path algorithms                        | BFS, DFS, Dijkstra                       | Shortest path, cycle detection         |
+| histogramidea/                                     | Largest rectangle in histogram and monotonic stack optimizations    | Monotonic stack                          | Max histogram area                     |
+| lccodes/                                           | Curated LeetCode problem solutions with links                       | Varied                                   | LeetCode 2-sum, median find            |
+| maths/                                             | Number theory utilities and mathematical problem solving            | GCD, sieve, modular arithmetic           | Prime sieve, modular exponentiation     |
+| scc/                                               | Strongly Connected Components using Kosaraju and Tarjan            | O(V+E) algorithms                        | SCC decomposition                      |
+| segmenttree/                                       | Advanced segment tree variants (persistent, merge sort tree)        | Segment trees, persistence               | Dynamic range queries                  |
+| string/                                            | String algorithms: KMP, Z-algo, Rabin-Karp                          | O(n) pattern search, rolling hash        | Pattern matching                       |
+| suprenode_dijkastra/                               | Supernode optimizations for multi-source shortest path problems     | Graph compression, Dijkstra              | Speed-optimized Dijkstra               |
+| templates/                                         | Reusable C++ templates and helper classes                           | Fast IO, macros, utility functions       | Template library                       |
+| topological_sort/                                  | Topological sorting in Directed Acyclic Graphs                       | Kahn's algorithm, DFS order              | Task scheduling, dependency resolution  |
+| tree/                                              | Tree algorithms: traversals, LCA, diameter                         | DFS, BFS, binary lifting                 | Tree diameter, distance queries         |
+| two_pointer/                                       | Two-pointer sliding window and partitioning techniques              | O(n) scan, window adjustments             | 2-sum, subarray sum                    |
+| backtracking/                                      | Backtracking and branch-and-bound search                             | Exponential search, pruning              | N-Queens, subset generation            |
+| basics/, binary_tree/, bitmanipulation/, contributation-technique/ | Utility snippets and foundational techniques                         | Fast IO, bit operations, tree setup      | Code snippets                          |
 
 ## Root Problem Solutions
 
