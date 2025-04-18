@@ -59,14 +59,31 @@ The project is organized into topic-focused modules:
 
 ## Root Problem Solutions
 
-Standalone files in the root directory follow the naming convention `<Letter>_<ProblemName>.cpp`, for example:
+Problems are now organized by category in the `problems/` directory:
 
-- `A_Boredom.cpp`
-- `B_Choosing_Cubes.cpp`
-- `C_Palindromic_Subsequences.cpp`
-- ...and many more
+### Problems by Difficulty Level
 
-Executables (`.exe`) generated from these files are also present.
+| Directory | Description |
+|-----------|-------------|
+| `problems/A/` | A-level problems (e.g., A_Boredom, A_Median_of_an_Array, A_Row_GCD) |
+| `problems/B/` | B-level problems (e.g., B_Choosing_Cubes, B_Make_Array_Good) |
+| `problems/C/` | C-level problems (e.g., C_Palindromic_Subsequences, C_Set_or_Decrease) |
+| `problems/D/` | D-level problems (e.g., D_Beautiful_Array, D_Carousel) |
+| `problems/E/` | E-level problems (e.g., E_Money_Buys_Happiness, E_Two_Arrays_and_Sum_of_Functions) |
+| `problems/F/` | F-level problems (e.g., F_Ira_and_Flamenco, F_Group_Projects) |
+| `problems/G/` | G-level problems (e.g., G_Yasya_and_the_Mysterious_Tree) |
+
+### Miscellaneous Problems
+
+Other problems are categorized by topic:
+
+| Directory | Description |
+|-----------|-------------|
+| `problems/Miscellaneous/Tree-Problems/` | Tree-related problems (e.g., Tree_Diameter, Subordinates) |
+| `problems/Miscellaneous/Range-Queries/` | Range query problems (e.g., Range_Xor_Queries, Increasing_Array_Queries) |
+| `problems/Miscellaneous/Math/` | Mathematical problems (e.g., Common_Divisors, Counting_Coprime_Pairs) |
+| `problems/Miscellaneous/Dynamic-Programming/` | DP problems (e.g., Required_Substring) |
+| `problems/Miscellaneous/Utility/` | Utility code and miscellaneous problems |
 
 ## Sample Input/Output
 
